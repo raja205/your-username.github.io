@@ -267,10 +267,10 @@
   }
 
   /* ── Click item in Certs list → just close panel (certs on same page) ── */
-  function goToCert(globalIndex) {
-    closePanels();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  // function goToCert(globalIndex) {
+  //   closePanels();
+  //   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // }
 
   /* ── Render projects grid ── */
   function renderProjects(page) {
@@ -319,16 +319,16 @@
         </div>`).join('');
   }
 
-  function buildCertList() {
+function buildCertList() {
     document.getElementById('total-cert-num').textContent = allCerts.length;
     document.getElementById('cert-list').innerHTML =
       allCerts.map((c, i) => `
-        <div class="panel-list-item" onclick="goToCert(${i})">
+        <div class="panel-list-item" ${c.url ? `onclick="window.open('${c.url}','_blank')"` : ''}>
           <span class="item-num">${i + 1}.</span>
           <span class="item-emoji">🏅</span>
           <span class="item-title">${c.title}</span>
           <span class="item-meta">${c.date}</span>
-          <span class="arrow">›</span>
+          <span class="arrow">↗</span>
         </div>`).join('');
   }
 
