@@ -3,212 +3,346 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio</title>
-
-  <!-- Bootswatch Simplex via jsDelivr CDN -->
-  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
-
+  <title>John Doe | Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/simplex/bootstrap.min.css">
   <style>
-    body { padding-top: 56px; }
-    .hero-section {
-      background: #f8f9fa;
-      border-bottom: 3px solid #d9230f;
-      padding: 3.5rem 0 2.5rem;
+    body { padding-top: 56px; background: #f5f5f5; }
+
+    /* Navbar */
+    .navbar { background: #2b2b2b !important; }
+    .navbar-brand { color: #fff !important; font-weight: 700; font-size: 1.3rem; }
+    .navbar-nav .nav-link { color: #ccc !important; }
+    .navbar-nav .nav-link:hover { color: #fff !important; }
+    .nav-divider { color: #666; padding: 0 0.25rem; }
+
+    /* About / Cert dropdown panels */
+    .dropdown-panel {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 2rem 0;
+      display: none;
     }
-    .hero-section h1 { font-size: 2.6rem; font-weight: 700; }
-    .hero-section .badge-link {
-      display: inline-block;
-      margin: 0.25rem;
-    }
-    .section-title {
-      border-left: 4px solid #d9230f;
-      padding-left: 0.75rem;
-      margin-bottom: 1.5rem;
+
+    /* Section heading */
+    .section-heading {
+      font-size: 1rem;
       font-weight: 700;
+      color: #333;
+      border-bottom: 2px solid #dee2e6;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.25rem;
     }
-    .cert-card, .proj-card {
+
+    /* Project card */
+    .proj-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
       height: 100%;
-      transition: box-shadow 0.2s;
     }
-    .cert-card:hover, .proj-card:hover {
-      box-shadow: 0 4px 16px rgba(217,35,15,0.12);
+    .proj-card .thumb {
+      width: 100%;
+      height: 165px;
+      object-fit: cover;
+      display: block;
     }
-    .tag { font-size: 0.75rem; }
-    footer {
-      background: #f8f9fa;
-      border-top: 1px solid #dee2e6;
-      padding: 1.5rem 0;
-      margin-top: 3rem;
+    .proj-card .thumb-placeholder {
+      width: 100%;
+      height: 165px;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #4fc3f7;
     }
-    .pagination { margin-top: 1.5rem; }
+    .proj-card .card-body {
+      padding: 0.65rem 0.75rem 0.85rem;
+      text-align: center;
+    }
+    .proj-card .card-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 0.55rem;
+      color: #111;
+    }
+    .btn-blue {
+      background: #1a6fc4;
+      border: none;
+      color: #fff !important;
+      font-size: 0.8rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: 4px;
+      margin: 0.15rem;
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-blue:hover { background: #145ba0; color: #fff !important; }
+
+    /* Cert card */
+    .cert-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      height: 100%;
+    }
+    .cert-card h5 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .cert-card .meta { font-size: 0.78rem; color: #888; margin-bottom: 0.65rem; }
+
+    /* Pagination */
+    .pagination .page-link { color: #1a6fc4; }
+    .pagination .page-item.active .page-link {
+      background: #1a6fc4; border-color: #1a6fc4; color: #fff;
+    }
+
+    /* Footer icons */
+    .footer-icons {
+      background: #f5f5f5;
+      border-top: 1px solid #ddd;
+      padding: 0.85rem 1rem;
+      margin-top: 2rem;
+    }
+    .footer-nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .footer-social { display: flex; align-items: center; gap: 0.5rem; }
+    .footer-icons a {
+      display: inline-block;
+      color: #222;
+      transition: color 0.2s;
+    }
+    .footer-icons a:hover { color: #1a6fc4; }
+    .footer-icons svg { width: 30px; height: 30px; vertical-align: middle; }
+
+    /* Prev / Next arrows */
+    .nav-arrow {
+      background: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.82rem;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-arrow:hover:not(:disabled) {
+      background: #1a6fc4;
+      border-color: #1a6fc4;
+      color: #fff;
+    }
+    .nav-arrow:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    /* Footer contact */
+    .footer-contact {
+      background: #fff;
+      border-top: 1px solid #ddd;
+      padding: 0.6rem 0;
+      text-align: center;
+      font-size: 0.84rem;
+      color: #444;
+    }
+
+    main { padding: 1.5rem 0 0; }
   </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-md navbar-dark bg-danger fixed-top">
+<nav class="navbar navbar-expand-md fixed-top">
   <div class="container">
-    <a class="navbar-brand fw-bold" id="nav-name" href="#">Portfolio</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+    <a class="navbar-brand" href="#">John Doe</a>
+    <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#" onclick="togglePanel(event,'about-section')">About</a></li>
+        <li class="nav-item"><span class="nav-divider d-none d-md-inline">|</span></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="togglePanel(event,'cert-section')">Certifications</a></li>
+        <li class="nav-item"><span class="nav-divider d-none d-md-inline">|</span></li>
+        <li class="nav-item"><a class="nav-link" href="#">CV</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Hero / About -->
-<section class="hero-section" id="about">
+<!-- About (toggle) -->
+<div id="about-section" class="dropdown-panel">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-8">
-        <p class="text-danger fw-semibold mb-1" id="hero-title"></p>
-        <h1 id="hero-name">—</h1>
-        <p class="text-muted mt-2 mb-3" id="hero-bio"></p>
-        <div id="hero-links"></div>
+    <div class="row">
+      <div class="col-md-8">
+        <h4 class="fw-bold mb-1">John Doe</h4>
+        <p class="text-muted small mb-1">Data Scientist</p>
+        <p class="small">Passionate about turning data into insights. Experienced in ML, NLP, and data visualization.</p>
       </div>
-      <div class="col-lg-4 mt-3 mt-lg-0">
-        <ul class="list-group list-group-flush" id="hero-contact"></ul>
+      <div class="col-md-4">
+        <ul class="list-unstyled small text-muted mt-2">
+          <li>📍 Indore, MP</li>
+          <li>📞 (123) 456-7890</li>
+          <li>✉️ johndoe@example.com</li>
+        </ul>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- Certifications -->
-<section class="container mt-5" id="certifications">
-  <h2 class="section-title">Certifications</h2>
-  <div class="row g-3" id="cert-container"></div>
-  <nav id="cert-pagination"></nav>
-</section>
+<!-- Certifications (toggle) -->
+<div id="cert-section" class="dropdown-panel">
+  <div class="container">
+    <div class="section-heading mb-3">Certifications</div>
+    <div class="row g-3">
+      <div class="col-sm-6 col-md-4">
+        <div class="cert-card">
+          <h5>Google Data Analytics</h5>
+          <div class="meta">Google / Coursera &middot; Jan 2024</div>
+          <a href="#" class="btn-blue">View Certificate</a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="cert-card">
+          <h5>IBM Data Science Professional</h5>
+          <div class="meta">IBM / Coursera &middot; Mar 2024</div>
+          <a href="#" class="btn-blue">View Certificate</a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="cert-card">
+          <h5>TensorFlow Developer Certificate</h5>
+          <div class="meta">Google &middot; Jun 2024</div>
+          <a href="#" class="btn-blue">View Certificate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- Projects -->
-<section class="container mt-5" id="projects">
-  <h2 class="section-title">Data Science Projects</h2>
-  <div class="row g-3" id="proj-container"></div>
-  <nav id="proj-pagination"></nav>
-</section>
+<!-- Main -->
+<main>
+  <div class="container">
+    <div class="mb-4">
+      <!-- Section heading with counter -->
+      <div class="d-flex align-items-center justify-content-between border-bottom border-2 pb-1 mb-3">
+        <span class="section-heading mb-0 border-0 pb-0">Projects</span>
+        <span id="proj-counter" class="text-muted small fw-semibold"></span>
+      </div>
+      <!-- Project grid -->
+      <div class="row g-3" id="proj-container"></div>
+    </div>
+  </div>
+</main>
 
-<!-- Footer -->
-<footer>
-  <div class="container text-center text-muted small" id="footer"></div>
-</footer>
+<!-- Footer Icons + Pagination -->
+<div class="footer-icons">
+  <div class="footer-nav-row">
+    <!-- Prev -->
+    <button id="btn-prev" class="nav-arrow" onclick="changePage(-1)" title="Previous page">
+      &#8592; Prev
+    </button>
 
-<!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap.bundle.min.js"></script>
+    <!-- GitHub + LinkedIn icons (center) -->
+    <div class="footer-social">
+      <a href="https://github.com" target="_blank" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+      <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+    </div>
 
+    <!-- Next -->
+    <button id="btn-next" class="nav-arrow" onclick="changePage(1)" title="Next page">
+      Next &#8594;
+    </button>
+  </div>
+</div>
+
+<!-- Footer Contact -->
+<div class="footer-contact">
+  Phone: (123) 456-7890 &nbsp;|&nbsp; Email: <strong>johndoe@example.com</strong>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-const PER_PAGE = 6;
-let certPage = 1, projPage = 1;
-let allCerts = [], allProjects = [];
-
-async function load(file) {
-  const r = await fetch(file + '?v=' + Date.now());
-  return r.json();
-}
-
-function paginate(items, page) {
-  return items.slice((page - 1) * PER_PAGE, page * PER_PAGE);
-}
-
-function renderPagination(containerId, total, current, fnName) {
-  const pages = Math.ceil(total / PER_PAGE);
-  const el = document.getElementById(containerId);
-  if (pages <= 1) { el.innerHTML = ''; return; }
-  el.innerHTML = `<ul class="pagination">
-    ${Array.from({length: pages}, (_, i) => `
-      <li class="page-item ${i+1===current?'active':''}">
-        <button class="page-link" onclick="${fnName}(${i+1})">${i+1}</button>
-      </li>`).join('')}
-  </ul>`;
-}
-
-window.renderCerts = function(page) {
-  certPage = page;
-  document.getElementById('cert-container').innerHTML =
-    paginate(allCerts, page).map(c => `
-      <div class="col-sm-6 col-lg-4">
-        <div class="card cert-card">
-          <div class="card-body">
-            <h5 class="card-title">${c.title}</h5>
-            <p class="card-text text-muted small">${c.issuer} &middot; ${c.date}</p>
-            ${c.url ? `<a href="${c.url}" target="_blank" class="btn btn-sm btn-outline-danger">View Certificate &rarr;</a>` : ''}
-          </div>
-        </div>
-      </div>`).join('');
-  renderPagination('cert-pagination', allCerts.length, page, 'renderCerts');
-};
-
-window.renderProjects = function(page) {
-  projPage = page;
-  document.getElementById('proj-container').innerHTML =
-    paginate(allProjects, page).map(p => `
-      <div class="col-sm-6 col-lg-4">
-        <div class="card proj-card">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">${p.title}</h5>
-            <p class="card-text text-muted small">${p.date || ''}</p>
-            <p class="card-text flex-grow-1">${p.description}</p>
-            <div class="mt-2 mb-3">
-              ${(p.tags||[]).map(t=>`<span class="badge bg-secondary tag me-1">${t}</span>`).join('')}
-            </div>
-            <div class="d-flex gap-2">
-              ${p.github ? `<a href="${p.github}" target="_blank" class="btn btn-sm btn-danger">GitHub</a>` : ''}
-              ${p.demo  ? `<a href="${p.demo}"   target="_blank" class="btn btn-sm btn-outline-secondary">Demo</a>` : ''}
-            </div>
-          </div>
-        </div>
-      </div>`).join('');
-  renderPagination('proj-pagination', allProjects.length, page, 'renderProjects');
-};
-
-async function init() {
-  const [profile, certs, projects] = await Promise.all([
-    load('data/profile.json'),
-    load('data/certifications.json'),
-    load('data/projects.json')
-  ]);
-  allCerts = certs;
-  allProjects = projects;
-
-  document.title = profile.name + ' | Portfolio';
-  document.getElementById('nav-name').textContent = profile.name.split(' ')[0];
-  document.getElementById('hero-name').textContent = profile.name;
-  document.getElementById('hero-title').textContent = profile.title;
-  document.getElementById('hero-bio').textContent = profile.bio;
-  document.getElementById('footer').textContent =
-    `© ${new Date().getFullYear()} ${profile.name} · ${profile.email}`;
-
-  // Action buttons
-  const linksEl = document.getElementById('hero-links');
-  const btnMap = [
-    { key: 'github',   label: 'GitHub',   cls: 'btn-danger' },
-    { key: 'linkedin', label: 'LinkedIn', cls: 'btn-outline-danger' },
-    { key: 'website',  label: 'Website',  cls: 'btn-outline-secondary' },
+  // ── Demo data: 12 projects to show pagination working ──
+  const allProjects = [
+    { title: 'AI Vision Model',         emoji: '🤖' },
+    { title: 'Sales Dashboard',         emoji: '📊' },
+    { title: 'Portfolio Website',       emoji: '💻' },
+    { title: 'Robotic Arm Control',     emoji: '🦾' },
+    { title: 'Eco Route Planner',       emoji: '🌿' },
+    { title: 'E-Commerce Analytics',    emoji: '🛒' },
+    { title: 'Castle Defense Game',     emoji: '🏰' },
+    { title: 'Stock Price Predictor',   emoji: '📈' },
+    { title: 'Autonomous Car Sim',      emoji: '🚗' },
+    { title: 'NLP Sentiment Analyser',  emoji: '🧠' },
+    { title: 'Medical Image Classifier',emoji: '🏥' },
+    { title: 'Fraud Detection System',  emoji: '🔍' },
   ];
-  btnMap.forEach(({key, label, cls}) => {
-    if (!profile[key]) return;
-    linksEl.innerHTML += `<a href="${profile[key]}" target="_blank" class="btn btn-sm ${cls} me-2 mb-2">${label}</a>`;
-  });
-  if (profile.email) {
-    linksEl.innerHTML += `<a href="mailto:${profile.email}" class="btn btn-sm btn-outline-secondary me-2 mb-2">Email</a>`;
+
+  const PER_PAGE = 9;
+  let currentPage = 1;
+
+  function renderProjects(page) {
+    currentPage = page;
+    const total = allProjects.length;
+    const totalPages = Math.ceil(total / PER_PAGE);
+    const start = (page - 1) * PER_PAGE;
+    const end = Math.min(start + PER_PAGE, total);
+    const slice = allProjects.slice(start, end);
+
+    // Counter: "9 / 12" style
+    document.getElementById('proj-counter').textContent = end + ' / ' + total;
+
+    // Render cards
+    document.getElementById('proj-container').innerHTML = slice.map(p => `
+      <div class="col-6 col-md-4">
+        <div class="proj-card">
+          <div class="thumb-placeholder">${p.emoji}</div>
+          <div class="card-body">
+            <div class="card-title">${p.title}</div>
+            <a href="#" class="btn-blue">ReadMe</a>
+            <a href="#" class="btn-blue">Source Code</a>
+          </div>
+        </div>
+      </div>`).join('');
+
+    // Prev / Next state
+    document.getElementById('btn-prev').disabled = page <= 1;
+    document.getElementById('btn-next').disabled = page >= totalPages;
   }
 
-  // Contact sidebar
-  const contactEl = document.getElementById('hero-contact');
-  if (profile.phone)    contactEl.innerHTML += `<li class="list-group-item px-0"><small class="text-muted">Phone</small><div>${profile.phone}</div></li>`;
-  if (profile.location) contactEl.innerHTML += `<li class="list-group-item px-0"><small class="text-muted">Location</small><div>${profile.location}</div></li>`;
-  if (profile.email)    contactEl.innerHTML += `<li class="list-group-item px-0"><small class="text-muted">Email</small><div>${profile.email}</div></li>`;
+  function changePage(dir) {
+    const total = allProjects.length;
+    const totalPages = Math.ceil(total / PER_PAGE);
+    const newPage = currentPage + dir;
+    if (newPage >= 1 && newPage <= totalPages) renderProjects(newPage);
+  }
 
-  renderCerts(1);
+  function togglePanel(e, id) {
+    e.preventDefault();
+    const panels = ['about-section', 'cert-section'];
+    panels.forEach(p => {
+      const el = document.getElementById(p);
+      el.style.display = (p === id && el.style.display !== 'block') ? 'block' : 'none';
+    });
+  }
+
+  // Init
   renderProjects(1);
-}
-
-init();
 </script>
 </body>
 </html>
