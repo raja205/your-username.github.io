@@ -3,6 +3,216 @@
     "title": "Google Data Analytics",
     "issuer": "Google / Coursera",
     "date": "Jan 2024",
-    "url": "https://certificate-link"
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "IBM Data Science Professional",
+    "issuer": "IBM / Coursera",
+    "date": "Feb 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "TensorFlow Developer Certificate",
+    "issuer": "Google",
+    "date": "Mar 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "AWS Certified Machine Learning",
+    "issuer": "Amazon Web Services",
+    "date": "Mar 2024",
+    "url": "https://aws.amazon.com/verification"
+  },
+  {
+    "title": "Microsoft Azure AI Fundamentals",
+    "issuer": "Microsoft",
+    "date": "Apr 2024",
+    "url": "https://learn.microsoft.com/verify"
+  },
+  {
+    "title": "Deep Learning Specialisation",
+    "issuer": "DeepLearning.AI / Coursera",
+    "date": "Apr 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Machine Learning by Stanford",
+    "issuer": "Stanford / Coursera",
+    "date": "May 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Python for Data Science",
+    "issuer": "IBM / Coursera",
+    "date": "May 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Data Visualisation with Tableau",
+    "issuer": "Tableau / Coursera",
+    "date": "Jun 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Natural Language Processing",
+    "issuer": "DeepLearning.AI / Coursera",
+    "date": "Jun 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Applied Data Science with Python",
+    "issuer": "University of Michigan / Coursera",
+    "date": "Jul 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Databases and SQL for Data Science",
+    "issuer": "IBM / Coursera",
+    "date": "Jul 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Big Data with Spark and Hadoop",
+    "issuer": "IBM / Coursera",
+    "date": "Aug 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Computer Vision Fundamentals",
+    "issuer": "DeepLearning.AI",
+    "date": "Aug 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Reinforcement Learning Specialisation",
+    "issuer": "University of Alberta / Coursera",
+    "date": "Sep 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Google Cloud Professional Data Engineer",
+    "issuer": "Google Cloud",
+    "date": "Sep 2024",
+    "url": "https://cloud.google.com/certification"
+  },
+  {
+    "title": "Power BI Data Analyst",
+    "issuer": "Microsoft",
+    "date": "Oct 2024",
+    "url": "https://learn.microsoft.com/verify"
+  },
+  {
+    "title": "Statistics for Data Science",
+    "issuer": "IBM / Coursera",
+    "date": "Oct 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "MLOps Fundamentals",
+    "issuer": "Google Cloud / Coursera",
+    "date": "Nov 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Feature Engineering for ML",
+    "issuer": "Google Cloud / Coursera",
+    "date": "Nov 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Generative AI with LLMs",
+    "issuer": "DeepLearning.AI / Coursera",
+    "date": "Dec 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Prompt Engineering for ChatGPT",
+    "issuer": "Vanderbilt University / Coursera",
+    "date": "Dec 2024",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Data Engineering Foundations",
+    "issuer": "IBM / Coursera",
+    "date": "Jan 2025",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Time Series Analysis",
+    "issuer": "DeepLearning.AI / Coursera",
+    "date": "Jan 2025",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Ethical AI and Responsible ML",
+    "issuer": "University of Michigan / Coursera",
+    "date": "Feb 2025",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Kubernetes for Data Scientists",
+    "issuer": "Linux Foundation",
+    "date": "Feb 2025",
+    "url": "https://training.linuxfoundation.org"
+  },
+  {
+    "title": "Docker for Data Science",
+    "issuer": "Udemy",
+    "date": "Mar 2025",
+    "url": "https://udemy.com/certificate/your-cert-id"
+  },
+  {
+    "title": "Advanced SQL for Analytics",
+    "issuer": "Mode Analytics",
+    "date": "Mar 2025",
+    "url": "https://mode.com/certification"
+  },
+  {
+    "title": "Snowflake Data Cloud Essentials",
+    "issuer": "Snowflake",
+    "date": "Apr 2025",
+    "url": "https://snowflake.com/certifications"
+  },
+  {
+    "title": "Hugging Face NLP Course",
+    "issuer": "Hugging Face",
+    "date": "Apr 2025",
+    "url": "https://huggingface.co/course"
+  },
+  {
+    "title": "Causal Inference in Data Science",
+    "issuer": "Columbia University / edX",
+    "date": "May 2025",
+    "url": "https://edx.org/verify/your-cert-id"
+  },
+  {
+    "title": "Graph Neural Networks",
+    "issuer": "Stanford Online",
+    "date": "May 2025",
+    "url": "https://online.stanford.edu"
+  },
+  {
+    "title": "Bayesian Machine Learning",
+    "issuer": "HSE University / Coursera",
+    "date": "Jun 2025",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Data Science Ethics",
+    "issuer": "University of Michigan / Coursera",
+    "date": "Jun 2025",
+    "url": "https://coursera.org/verify/your-cert-id"
+  },
+  {
+    "title": "Apache Kafka for Data Pipelines",
+    "issuer": "Confluent",
+    "date": "Jul 2025",
+    "url": "https://confluent.io/certification"
+  },
+  {
+    "title": "dbt Analytics Engineering",
+    "issuer": "dbt Labs",
+    "date": "Jul 2025",
+    "url": "https://credentials.getdbt.com"
   }
 ]
