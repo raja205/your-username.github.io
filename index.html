@@ -10,131 +10,108 @@
 
     /* Navbar */
     .navbar { background: #2b2b2b !important; }
-    .navbar-brand { color: #fff !important; font-weight: 700; font-size: 1.3rem; }
+    .navbar-brand { color: #fff !important; font-weight: 700; font-size: 1.3rem; cursor: pointer; }
     .navbar-nav .nav-link { color: #ccc !important; }
     .navbar-nav .nav-link:hover { color: #fff !important; }
     .nav-divider { color: #666; padding: 0 0.25rem; }
 
-    /* About / Cert dropdown panels */
+    /* Dropdown panels — slide down animation */
     .dropdown-panel {
       background: #fff;
-      border-bottom: 1px solid #ddd;
-      padding: 2rem 0;
-      display: none;
+      border-bottom: 3px solid #1a6fc4;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.28s ease;
+      pointer-events: none;
+    }
+    .dropdown-panel.open {
+      max-height: 400px;
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    /* Section heading */
-    .section-heading {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #333;
-      border-bottom: 2px solid #dee2e6;
-      padding-bottom: 0.4rem;
-      margin-bottom: 1.25rem;
+    /* Panel layout */
+    .panel-inner { display: flex; align-items: stretch; max-height: 320px; }
+    .panel-stat-col {
+      min-width: 160px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 1.5rem 1.25rem; border-right: 1px solid #dee2e6; background: #f8f9fa;
     }
+    .panel-stat-col .big-num { font-size: 3.5rem; font-weight: 800; color: #1a6fc4; line-height: 1; }
+    .panel-stat-col .big-label { font-size: 0.8rem; color: #777; margin-top: 0.3rem; text-align: center; }
+
+    /* Scrollable list */
+    .panel-list-col { flex: 1; overflow-y: auto; max-height: 320px; padding: 0.5rem 0; }
+    .panel-list-col::-webkit-scrollbar { width: 5px; }
+    .panel-list-col::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+    .panel-list-item {
+      display: flex; align-items: center;
+      padding: 0.5rem 1.25rem; cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.15s; text-decoration: none; color: #333;
+    }
+    .panel-list-item:hover { background: #e8f0fb; color: #1a6fc4; }
+    .panel-list-item .item-num { font-size: 0.72rem; color: #aaa; min-width: 28px; font-weight: 600; }
+    .panel-list-item .item-emoji { font-size: 1.1rem; margin-right: 0.6rem; }
+    .panel-list-item .item-title { font-size: 0.85rem; font-weight: 500; }
+    .panel-list-item .item-meta { font-size: 0.75rem; color: #999; margin-left: auto; padding-left: 0.5rem; white-space: nowrap; }
+    .panel-list-item .arrow { font-size: 0.75rem; color: #ccc; margin-left: 0.5rem; }
+    .panel-list-item:hover .arrow { color: #1a6fc4; }
+
+    /* About panel */
+    .about-inner { padding: 1.5rem 0; }
+
+    /* Section bar */
+    .section-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 2px solid #dee2e6; padding-bottom: 0.4rem; margin-bottom: 1.25rem;
+    }
+    .section-bar .section-title { font-size: 1rem; font-weight: 700; color: #333; margin: 0; }
+    .section-bar .counter { font-size: 0.82rem; font-weight: 600; color: #888; }
 
     /* Project card */
     .proj-card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      overflow: hidden;
-      height: 100%;
+      background: #fff; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; height: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .proj-card .thumb {
-      width: 100%;
-      height: 165px;
-      object-fit: cover;
-      display: block;
-    }
+    .proj-card.highlight { border-color: #1a6fc4; box-shadow: 0 0 0 3px rgba(26,111,196,0.15); }
+    .proj-card .thumb { width: 100%; height: 165px; object-fit: cover; display: block; }
     .proj-card .thumb-placeholder {
-      width: 100%;
-      height: 165px;
+      width: 100%; height: 165px;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      color: #4fc3f7;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; color: #4fc3f7;
     }
-    .proj-card .card-body {
-      padding: 0.65rem 0.75rem 0.85rem;
-      text-align: center;
-    }
-    .proj-card .card-title {
-      font-weight: 700;
-      font-size: 0.92rem;
-      margin-bottom: 0.55rem;
-      color: #111;
-    }
+    .proj-card .card-body { padding: 0.65rem 0.75rem 0.85rem; text-align: center; }
+    .proj-card .card-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 0.55rem; color: #111; }
+
     .btn-blue {
-      background: #1a6fc4;
-      border: none;
-      color: #fff !important;
-      font-size: 0.8rem;
-      padding: 0.3rem 0.85rem;
-      border-radius: 4px;
-      margin: 0.15rem;
-      display: inline-block;
-      text-decoration: none;
-      cursor: pointer;
+      background: #1a6fc4; border: none; color: #fff !important;
+      font-size: 0.8rem; padding: 0.3rem 0.85rem; border-radius: 4px;
+      margin: 0.15rem; display: inline-block; text-decoration: none; cursor: pointer;
     }
     .btn-blue:hover { background: #145ba0; color: #fff !important; }
 
-    /* Cert card */
-    .cert-card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 1rem 1.2rem;
-      height: 100%;
-    }
-    .cert-card h5 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .cert-card .meta { font-size: 0.78rem; color: #888; margin-bottom: 0.65rem; }
-
-    /* Footer icons */
-    .footer-icons {
-      background: #f5f5f5;
-      border-top: 1px solid #ddd;
-      padding: 0.85rem 1rem;
-      margin-top: 2rem;
-    }
-    .footer-nav-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 480px;
-      margin: 0 auto;
-    }
+    /* Footer */
+    .footer-icons { background: #f5f5f5; border-top: 1px solid #ddd; padding: 0.85rem 1rem; margin-top: 2rem; }
+    .footer-nav-row { display: flex; align-items: center; justify-content: space-between; max-width: 480px; margin: 0 auto; }
     .footer-social { display: flex; align-items: center; gap: 0.5rem; }
     .footer-icons a { display: inline-block; color: #222; transition: color 0.2s; }
     .footer-icons a:hover { color: #1a6fc4; }
     .footer-icons svg { width: 30px; height: 30px; vertical-align: middle; }
-
-    /* Prev / Next arrows */
     .nav-arrow {
-      background: none;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 0.3rem 0.8rem;
-      font-size: 0.82rem;
-      color: #333;
-      cursor: pointer;
-      transition: all 0.2s;
+      background: none; border: 1px solid #ccc; border-radius: 4px;
+      padding: 0.3rem 0.8rem; font-size: 0.82rem; color: #333; cursor: pointer; transition: all 0.2s;
     }
     .nav-arrow:hover:not(:disabled) { background: #1a6fc4; border-color: #1a6fc4; color: #fff; }
     .nav-arrow:disabled { opacity: 0.3; cursor: default; }
-
-    /* Footer contact */
     .footer-contact {
-      background: #fff;
-      border-top: 1px solid #ddd;
-      padding: 0.6rem 0;
-      text-align: center;
-      font-size: 0.84rem;
-      color: #444;
+      background: #fff; border-top: 1px solid #ddd;
+      padding: 0.6rem 0; text-align: center; font-size: 0.84rem; color: #444;
     }
-
     main { padding: 1.5rem 0 0; }
   </style>
 </head>
@@ -143,15 +120,17 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md fixed-top">
   <div class="container">
-    <a class="navbar-brand" id="nav-name" href="#">Portfolio</a>
+    <span class="navbar-brand" id="nav-name" onclick="closePanels()">Portfolio</span>
     <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navMenu">
       <ul class="navbar-nav align-items-center">
-        <li class="nav-item"><a class="nav-link" href="#" onclick="togglePanel(event,'about-section')">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="togglePanel(event,'about-panel')">About</a></li>
         <li class="nav-item"><span class="nav-divider d-none d-md-inline">|</span></li>
-        <li class="nav-item"><a class="nav-link" href="#" onclick="togglePanel(event,'cert-section')">Certifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="togglePanel(event,'proj-panel')">Projects</a></li>
+        <li class="nav-item"><span class="nav-divider d-none d-md-inline">|</span></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="togglePanel(event,'cert-panel')">Certifications</a></li>
         <li class="nav-item"><span class="nav-divider d-none d-md-inline">|</span></li>
         <li class="nav-item"><a class="nav-link" id="cv-link" href="#" target="_blank">CV</a></li>
       </ul>
@@ -159,9 +138,9 @@
   </div>
 </nav>
 
-<!-- About panel — filled from profile.json -->
-<div id="about-section" class="dropdown-panel">
-  <div class="container">
+<!-- About panel -->
+<div id="about-panel" class="dropdown-panel">
+  <div class="container about-inner">
     <div class="row">
       <div class="col-md-8">
         <h4 class="fw-bold mb-1" id="about-name"></h4>
@@ -180,56 +159,111 @@
   </div>
 </div>
 
-<!-- Certifications panel — filled from certifications.json -->
-<div id="cert-section" class="dropdown-panel">
-  <div class="container">
-    <div class="section-heading mb-3">Certifications</div>
-    <div class="row g-3" id="cert-container"></div>
+<!-- Projects list panel -->
+<div id="proj-panel" class="dropdown-panel">
+  <div class="container p-0">
+    <div class="panel-inner">
+      <div class="panel-stat-col">
+        <div class="big-num" id="total-proj-num">—</div>
+        <div class="big-label">Total<br>Projects</div>
+      </div>
+      <div class="panel-list-col" id="proj-list"></div>
+    </div>
   </div>
 </div>
 
-<!-- Main projects grid -->
+<!-- Certifications list panel -->
+<div id="cert-panel" class="dropdown-panel">
+  <div class="container p-0">
+    <div class="panel-inner">
+      <div class="panel-stat-col">
+        <div class="big-num" id="total-cert-num">—</div>
+        <div class="big-label">Total<br>Certifications</div>
+      </div>
+      <div class="panel-list-col" id="cert-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Main: 9-grid project layout -->
 <main>
   <div class="container">
     <div class="mb-4">
-      <div class="d-flex align-items-center justify-content-between border-bottom border-2 pb-1 mb-3">
-        <span class="section-heading mb-0 border-0 pb-0">Projects</span>
-        <span id="proj-counter" class="text-muted small fw-semibold"></span>
+      <div class="section-bar">
+        <span class="section-title">Projects</span>
+        <span class="counter" id="proj-counter"></span>
       </div>
       <div class="row g-3" id="proj-container"></div>
     </div>
   </div>
 </main>
 
-<!-- Footer: Prev | GitHub + LinkedIn | Next -->
+<!-- Footer -->
 <div class="footer-icons">
   <div class="footer-nav-row">
     <button id="btn-prev" class="nav-arrow" onclick="changePage(-1)">&#8592; Prev</button>
     <div class="footer-social">
       <a id="github-link" href="#" target="_blank" title="GitHub">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
       </a>
       <a id="linkedin-link" href="#" target="_blank" title="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
     </div>
     <button id="btn-next" class="nav-arrow" onclick="changePage(1)">Next &#8594;</button>
   </div>
 </div>
-
-<!-- Footer contact bar — filled from profile.json -->
 <div class="footer-contact" id="footer-contact"></div>
 
 <script src="assets/vendor/bootstrap.bundle.min.js"></script>
 <script>
   const PER_PAGE = 9;
   let currentPage = 1;
-  let allProjects = [];
+  let allProjects = [], allCerts = [];
 
+  /* ── Toggle panels ── */
+  function togglePanel(e, id) {
+    e.preventDefault();
+    const panels = ['about-panel','proj-panel','cert-panel'];
+    panels.forEach(p => {
+      const el = document.getElementById(p);
+      if (p === id) {
+        el.classList.toggle('open');
+      } else {
+        el.classList.remove('open');
+      }
+    });
+  }
+  function closePanels() {
+    ['about-panel','proj-panel','cert-panel'].forEach(p => {
+      document.getElementById(p).classList.remove('open');
+    });
+  }
+
+  /* ── Click item in Projects list → go to that page & highlight card ── */
+  function goToProject(globalIndex) {
+    closePanels();
+    const page = Math.ceil((globalIndex + 1) / PER_PAGE);
+    renderProjects(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      const posOnPage = globalIndex % PER_PAGE;
+      const cards = document.querySelectorAll('#proj-container .proj-card');
+      if (cards[posOnPage]) {
+        cards[posOnPage].classList.add('highlight');
+        cards[posOnPage].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => cards[posOnPage].classList.remove('highlight'), 2000);
+      }
+    }, 150);
+  }
+
+  /* ── Click item in Certs list → just close panel (certs on same page) ── */
+  function goToCert(globalIndex) {
+    closePanels();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── Render projects grid ── */
   function renderProjects(page) {
     currentPage = page;
     const total      = allProjects.length;
@@ -238,11 +272,10 @@
     const end        = Math.min(start + PER_PAGE, total);
 
     document.getElementById('proj-counter').textContent = end + ' / ' + total;
-
     document.getElementById('proj-container').innerHTML =
-      allProjects.slice(start, end).map(p => `
+      allProjects.slice(start, end).map((p, i) => `
         <div class="col-6 col-md-4">
-          <div class="proj-card">
+          <div class="proj-card" id="proj-card-${start + i}">
             ${p.image
               ? `<img src="${p.image}" class="thumb" alt="${p.title}">`
               : `<div class="thumb-placeholder">${p.emoji || '📁'}</div>`}
@@ -264,14 +297,33 @@
     if (newPage >= 1 && newPage <= totalPages) renderProjects(newPage);
   }
 
-  function togglePanel(e, id) {
-    e.preventDefault();
-    ['about-section', 'cert-section'].forEach(p => {
-      const el = document.getElementById(p);
-      el.style.display = (p === id && el.style.display !== 'block') ? 'block' : 'none';
-    });
+  /* ── Build scrollable panel lists ── */
+  function buildProjList() {
+    document.getElementById('total-proj-num').textContent = allProjects.length;
+    document.getElementById('proj-list').innerHTML =
+      allProjects.map((p, i) => `
+        <div class="panel-list-item" onclick="goToProject(${i})">
+          <span class="item-num">${i + 1}.</span>
+          <span class="item-emoji">${p.emoji || '📁'}</span>
+          <span class="item-title">${p.title}</span>
+          <span class="arrow">›</span>
+        </div>`).join('');
   }
 
+  function buildCertList() {
+    document.getElementById('total-cert-num').textContent = allCerts.length;
+    document.getElementById('cert-list').innerHTML =
+      allCerts.map((c, i) => `
+        <div class="panel-list-item" onclick="goToCert(${i})">
+          <span class="item-num">${i + 1}.</span>
+          <span class="item-emoji">🏅</span>
+          <span class="item-title">${c.title}</span>
+          <span class="item-meta">${c.date}</span>
+          <span class="arrow">›</span>
+        </div>`).join('');
+  }
+
+  /* ── Load all JSON ── */
   async function init() {
     const ts = '?v=' + Date.now();
     const [profile, certs, projects] = await Promise.all([
@@ -281,6 +333,7 @@
     ]);
 
     allProjects = projects;
+    allCerts    = certs;
 
     /* Navbar */
     document.title = profile.name + ' | Portfolio';
@@ -289,38 +342,25 @@
 
     /* About panel */
     document.getElementById('about-name').textContent  = profile.name;
-    document.getElementById('about-title').textContent = profile.title   || '';
-    document.getElementById('about-bio').textContent   = profile.bio     || '';
+    document.getElementById('about-title').textContent = profile.title || '';
+    document.getElementById('about-bio').textContent   = profile.bio   || '';
     if (profile.location) document.getElementById('about-location').textContent = '📍 ' + profile.location;
     if (profile.phone)    document.getElementById('about-phone').textContent    = '📞 ' + profile.phone;
     if (profile.email)    document.getElementById('about-email').textContent    = '✉️ '  + profile.email;
     if (profile.website)  document.getElementById('about-website').innerHTML    =
       '🌐 <a href="' + profile.website + '" target="_blank">' + profile.website + '</a>';
 
-    /* Footer social icons */
+    /* Footer */
     if (profile.github)   document.getElementById('github-link').href   = profile.github;
     if (profile.linkedin) document.getElementById('linkedin-link').href = profile.linkedin;
-
-    /* Footer contact bar */
     const parts = [];
     if (profile.phone) parts.push('Phone: ' + profile.phone);
     if (profile.email) parts.push('Email: <strong>' + profile.email + '</strong>');
     document.getElementById('footer-contact').innerHTML = parts.join(' &nbsp;|&nbsp; ');
 
-    /* Certifications panel */
-    document.getElementById('cert-container').innerHTML =
-      certs.length === 0
-        ? '<div class="col"><p class="text-muted small">No certifications added yet.</p></div>'
-        : certs.map(c => `
-            <div class="col-sm-6 col-md-4">
-              <div class="cert-card">
-                <h5>${c.title}</h5>
-                <div class="meta">${c.issuer} &middot; ${c.date}</div>
-                ${c.url ? `<a href="${c.url}" target="_blank" class="btn-blue">View Certificate</a>` : ''}
-              </div>
-            </div>`).join('');
-
-    /* Projects grid */
+    /* Build lists & grid */
+    buildProjList();
+    buildCertList();
     renderProjects(1);
   }
 
