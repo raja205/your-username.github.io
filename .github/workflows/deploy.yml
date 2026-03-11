@@ -1,0 +1,48 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to GitHub Pages
+        # GitHub Pages auto-deploys from main branch
+        # This action just validates the push happened
+        run: echo "Deployed at $(date)"
+```
+
+> Since GitHub Pages auto-serves from the `main` branch, no build step is needed. This action just confirms the push triggered.
+
+---
+
+## 🔄 Daily Workflow (Adding New Content)
+
+**Add a new project:**
+1. Edit `data/projects.json` — add a new object to the array
+2. `git add . && git commit -m "Add new project" && git push`
+3. Site updates in ~30 seconds ✅
+
+**Add a new certification:**
+1. Upload image to `assets/cert-thumbnails/`
+2. Add entry to `data/certifications.json`
+3. Push → live ✅
+
+---
+
+## 🌐 Custom Domain (Optional, still free)
+
+1. Buy domain from **Namecheap** (~₹800/yr) or use **Freenom** (free .tk domain)
+2. In GitHub Pages settings → Custom domain → enter your domain
+3. Add a `CNAME` file with your domain name to the repo root
+4. Point your domain's DNS to GitHub's IPs
+
+---
+
+## Summary
+```
+You edit JSON → git push → GitHub Pages serves it → Site auto-updates
