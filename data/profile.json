@@ -1,11 +1,12 @@
 {
-  "name": "Your Name",
-  "title": "Data Scientist",
-  "phone": "+91 XXXXX XXXXX",
-  "email": "you@email.com",
-  "location": "Indore, MP",
-  "linkedin": "https://linkedin.com/in/yourprofile",
+  "name": "Raja Sen",
+  "title": "Manager",
+  "bio": "Enthusiast",
+  "location": "Jabalpur, MP",
+  "phone": "+91 98765 4321",
+  "email": "batman@email.com",
+  "website": "https://yoursite.github.io",
   "github": "https://github.com/yourusername",
-  "website": "https://yourusername.github.io",
-  "bio": "Brief intro about yourself — 2-3 lines."
+  "linkedin": "https://linkedin.com/in/yourprofile",
+  "cv": "assets/MyCV.pdf"
 }
