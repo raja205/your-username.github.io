@@ -278,20 +278,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   // ── Demo data: 12 projects to show pagination working ──
-  const allProjects = [
-    { title: 'AI Vision Model',         emoji: '🤖' },
-    { title: 'Sales Dashboard',         emoji: '📊' },
-    { title: 'Portfolio Website',       emoji: '💻' },
-    { title: 'Robotic Arm Control',     emoji: '🦾' },
-    { title: 'Eco Route Planner',       emoji: '🌿' },
-    { title: 'E-Commerce Analytics',    emoji: '🛒' },
-    { title: 'Castle Defense Game',     emoji: '🏰' },
-    { title: 'Stock Price Predictor',   emoji: '📈' },
-    { title: 'Autonomous Car Sim',      emoji: '🚗' },
-    { title: 'NLP Sentiment Analyser',  emoji: '🧠' },
-    { title: 'Medical Image Classifier',emoji: '🏥' },
-    { title: 'Fraud Detection System',  emoji: '🔍' },
-  ];
+async function init() {
+  const allProjects = await (await fetch('data/projects.json?v=' + Date.now())).json();
+  renderProjects(1);
+}
+init();
 
   const PER_PAGE = 9;
   let currentPage = 1;
