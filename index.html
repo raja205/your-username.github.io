@@ -4,92 +4,107 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Bootswatch Simplex via jsDelivr CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/simplex/bootstrap.min.css">
+
   <style>
-    :root {
-      --bg: #0d0d0d; --surface: #161616; --border: #2a2a2a;
-      --accent: #00ff87; --text: #e8e8e8; --muted: #666;
+    body { padding-top: 56px; }
+    .hero-section {
+      background: #f8f9fa;
+      border-bottom: 3px solid #d9230f;
+      padding: 3.5rem 0 2.5rem;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; }
-    
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.85rem; margin-left: 1.5rem; transition: color 0.2s; }
-    nav a:hover { color: var(--accent); }
-    .logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--accent); }
-
-    .hero { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
-    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem,6vw,4.5rem); font-weight: 800; line-height: 1.1; }
-    .hero h1 span { color: var(--accent); }
-    .hero p { color: var(--muted); margin: 1.5rem 0; max-width: 600px; line-height: 1.7; }
-    .links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-    .btn { padding: 0.6rem 1.4rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 500; border: 1px solid var(--border); color: var(--text); transition: all 0.2s; }
-    .btn:hover { border-color: var(--accent); color: var(--accent); }
-    .btn.primary { background: var(--accent); color: #000; border-color: var(--accent); }
-    .btn.primary:hover { background: transparent; color: var(--accent); }
-
-    section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
-    h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .section-line { width: 40px; height: 3px; background: var(--accent); margin-bottom: 2.5rem; }
-
-    .cert-grid, .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1.25rem; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; transition: border-color 0.2s; }
-    .card:hover { border-color: var(--accent); }
-    .card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; margin-bottom: 0.4rem; }
-    .card .meta { color: var(--muted); font-size: 0.8rem; margin-bottom: 0.75rem; }
-    .card p { font-size: 0.875rem; color: #aaa; line-height: 1.6; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
-    .tag { background: #1e1e1e; border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 3px; font-size: 0.75rem; color: var(--muted); }
-    .card-links { margin-top: 1rem; display: flex; gap: 0.75rem; }
-    .card-links a { font-size: 0.8rem; color: var(--accent); text-decoration: none; }
-
-    /* Pagination */
-    .pagination { display: flex; justify-content: center; gap: 0.5rem; padding: 2rem; }
-    .page-btn { padding: 0.5rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; color: var(--text); cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
-    .page-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
-    .page-btn:hover:not(.active) { border-color: var(--accent); }
-
-    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.8rem; }
-    .hidden { display: none; }
+    .hero-section h1 { font-size: 2.6rem; font-weight: 700; }
+    .hero-section .badge-link {
+      display: inline-block;
+      margin: 0.25rem;
+    }
+    .section-title {
+      border-left: 4px solid #d9230f;
+      padding-left: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    .cert-card, .proj-card {
+      height: 100%;
+      transition: box-shadow 0.2s;
+    }
+    .cert-card:hover, .proj-card:hover {
+      box-shadow: 0 4px 16px rgba(217,35,15,0.12);
+    }
+    .tag { font-size: 0.75rem; }
+    footer {
+      background: #f8f9fa;
+      border-top: 1px solid #dee2e6;
+      padding: 1.5rem 0;
+      margin-top: 3rem;
+    }
+    .pagination { margin-top: 1.5rem; }
   </style>
 </head>
 <body>
 
-<nav>
-  <span class="logo" id="nav-name">Portfolio</span>
-  <div>
-    <a href="#about">About</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#projects">Projects</a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-danger fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" id="nav-name" href="#">Portfolio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+      </ul>
+    </div>
   </div>
 </nav>
 
-<div class="hero" id="about">
-  <h1>Hi, I'm <span id="hero-name">—</span></h1>
-  <h1 id="hero-title" style="color:var(--muted);font-size:clamp(1.5rem,3vw,2.5rem)"></h1>
-  <p id="hero-bio"></p>
-  <div class="links" id="hero-links"></div>
-</div>
-
-<section id="certifications">
-  <h2>Certifications</h2>
-  <div class="section-line"></div>
-  <div class="cert-grid" id="cert-container"></div>
-  <div class="pagination" id="cert-pagination"></div>
+<!-- Hero / About -->
+<section class="hero-section" id="about">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <p class="text-danger fw-semibold mb-1" id="hero-title"></p>
+        <h1 id="hero-name">—</h1>
+        <p class="text-muted mt-2 mb-3" id="hero-bio"></p>
+        <div id="hero-links"></div>
+      </div>
+      <div class="col-lg-4 mt-3 mt-lg-0">
+        <ul class="list-group list-group-flush" id="hero-contact"></ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="projects">
-  <h2>Data Science Projects</h2>
-  <div class="section-line"></div>
-  <div class="proj-grid" id="proj-container"></div>
-  <div class="pagination" id="proj-pagination"></div>
+<!-- Certifications -->
+<section class="container mt-5" id="certifications">
+  <h2 class="section-title">Certifications</h2>
+  <div class="row g-3" id="cert-container"></div>
+  <nav id="cert-pagination"></nav>
 </section>
 
-<footer id="footer"></footer>
+<!-- Projects -->
+<section class="container mt-5" id="projects">
+  <h2 class="section-title">Data Science Projects</h2>
+  <div class="row g-3" id="proj-container"></div>
+  <nav id="proj-pagination"></nav>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center text-muted small" id="footer"></div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 const PER_PAGE = 6;
 let certPage = 1, projPage = 1;
+let allCerts = [], allProjects = [];
 
 async function load(file) {
   const r = await fetch(file + '?v=' + Date.now());
@@ -97,17 +112,59 @@ async function load(file) {
 }
 
 function paginate(items, page) {
-  const start = (page - 1) * PER_PAGE;
-  return items.slice(start, start + PER_PAGE);
+  return items.slice((page - 1) * PER_PAGE, page * PER_PAGE);
 }
 
-function renderPagination(container, total, current, onPage) {
+function renderPagination(containerId, total, current, fnName) {
   const pages = Math.ceil(total / PER_PAGE);
-  if (pages <= 1) { container.innerHTML = ''; return; }
-  container.innerHTML = Array.from({length: pages}, (_, i) =>
-    `<button class="page-btn ${i+1===current?'active':''}" onclick="${onPage}(${i+1})">${i+1}</button>`
-  ).join('');
+  const el = document.getElementById(containerId);
+  if (pages <= 1) { el.innerHTML = ''; return; }
+  el.innerHTML = `<ul class="pagination">
+    ${Array.from({length: pages}, (_, i) => `
+      <li class="page-item ${i+1===current?'active':''}">
+        <button class="page-link" onclick="${fnName}(${i+1})">${i+1}</button>
+      </li>`).join('')}
+  </ul>`;
 }
+
+window.renderCerts = function(page) {
+  certPage = page;
+  document.getElementById('cert-container').innerHTML =
+    paginate(allCerts, page).map(c => `
+      <div class="col-sm-6 col-lg-4">
+        <div class="card cert-card">
+          <div class="card-body">
+            <h5 class="card-title">${c.title}</h5>
+            <p class="card-text text-muted small">${c.issuer} &middot; ${c.date}</p>
+            ${c.url ? `<a href="${c.url}" target="_blank" class="btn btn-sm btn-outline-danger">View Certificate &rarr;</a>` : ''}
+          </div>
+        </div>
+      </div>`).join('');
+  renderPagination('cert-pagination', allCerts.length, page, 'renderCerts');
+};
+
+window.renderProjects = function(page) {
+  projPage = page;
+  document.getElementById('proj-container').innerHTML =
+    paginate(allProjects, page).map(p => `
+      <div class="col-sm-6 col-lg-4">
+        <div class="card proj-card">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${p.title}</h5>
+            <p class="card-text text-muted small">${p.date || ''}</p>
+            <p class="card-text flex-grow-1">${p.description}</p>
+            <div class="mt-2 mb-3">
+              ${(p.tags||[]).map(t=>`<span class="badge bg-secondary tag me-1">${t}</span>`).join('')}
+            </div>
+            <div class="d-flex gap-2">
+              ${p.github ? `<a href="${p.github}" target="_blank" class="btn btn-sm btn-danger">GitHub</a>` : ''}
+              ${p.demo  ? `<a href="${p.demo}"   target="_blank" class="btn btn-sm btn-outline-secondary">Demo</a>` : ''}
+            </div>
+          </div>
+        </div>
+      </div>`).join('');
+  renderPagination('proj-pagination', allProjects.length, page, 'renderProjects');
+};
 
 async function init() {
   const [profile, certs, projects] = await Promise.all([
@@ -115,62 +172,37 @@ async function init() {
     load('data/certifications.json'),
     load('data/projects.json')
   ]);
+  allCerts = certs;
+  allProjects = projects;
 
-  // Profile
   document.title = profile.name + ' | Portfolio';
   document.getElementById('nav-name').textContent = profile.name.split(' ')[0];
   document.getElementById('hero-name').textContent = profile.name;
   document.getElementById('hero-title').textContent = profile.title;
   document.getElementById('hero-bio').textContent = profile.bio;
-  document.getElementById('footer').textContent = `© ${new Date().getFullYear()} ${profile.name} · ${profile.email}`;
+  document.getElementById('footer').textContent =
+    `© ${new Date().getFullYear()} ${profile.name} · ${profile.email}`;
 
+  // Action buttons
   const linksEl = document.getElementById('hero-links');
-  const linkMap = { linkedin: 'LinkedIn', github: 'GitHub', website: 'Website', email: 'Email' };
-  Object.entries(linkMap).forEach(([key, label]) => {
+  const btnMap = [
+    { key: 'github',   label: 'GitHub',   cls: 'btn-danger' },
+    { key: 'linkedin', label: 'LinkedIn', cls: 'btn-outline-danger' },
+    { key: 'website',  label: 'Website',  cls: 'btn-outline-secondary' },
+  ];
+  btnMap.forEach(({key, label, cls}) => {
     if (!profile[key]) return;
-    const a = document.createElement('a');
-    a.className = 'btn' + (key === 'github' ? ' primary' : '');
-    a.href = key === 'email' ? 'mailto:' + profile[key] : profile[key];
-    a.target = '_blank'; a.textContent = label;
-    linksEl.appendChild(a);
+    linksEl.innerHTML += `<a href="${profile[key]}" target="_blank" class="btn btn-sm ${cls} me-2 mb-2">${label}</a>`;
   });
-  if (profile.phone) {
-    const span = document.createElement('span');
-    span.className = 'btn'; span.style.cursor = 'default';
-    span.textContent = '📞 ' + profile.phone;
-    linksEl.appendChild(span);
+  if (profile.email) {
+    linksEl.innerHTML += `<a href="mailto:${profile.email}" class="btn btn-sm btn-outline-secondary me-2 mb-2">Email</a>`;
   }
 
-  // Certs
-  window.renderCerts = function(page) {
-    certPage = page;
-    const container = document.getElementById('cert-container');
-    container.innerHTML = paginate(certs, page).map(c => `
-      <div class="card">
-        <h3>${c.title}</h3>
-        <div class="meta">${c.issuer} · ${c.date}</div>
-        ${c.url ? `<a class="btn" href="${c.url}" target="_blank" style="font-size:0.8rem;padding:0.4rem 0.9rem">View Certificate ↗</a>` : ''}
-      </div>`).join('');
-    renderPagination(document.getElementById('cert-pagination'), certs.length, page, 'renderCerts');
-  };
-
-  // Projects
-  window.renderProjects = function(page) {
-    projPage = page;
-    const container = document.getElementById('proj-container');
-    container.innerHTML = paginate(projects, page).map(p => `
-      <div class="card">
-        <h3>${p.title}</h3>
-        <div class="meta">${p.date || ''}</div>
-        <p>${p.description}</p>
-        <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-        <div class="card-links">
-          ${p.github ? `<a href="${p.github}" target="_blank">GitHub ↗</a>` : ''}
-          ${p.demo ? `<a href="${p.demo}" target="_blank">Demo ↗</a>` : ''}
-        </div>
-      </div>`).join('');
-    renderPagination(document.getElementById('proj-pagination'), projects.length, page, 'renderProjects');
-  };
+  // Contact sidebar
+  const contactEl = document.getElementById('hero-contact');
+  if (profile.phone)    contactEl.innerHTML += `<li class="list-group-item px-0"><small class="text-muted">Phone</small><div>${profile.phone}</div></li>`;
+  if (profile.location) contactEl.innerHTML += `<li class="list-group-item px-0"><small class="text-muted">Location</small><div>${profile.location}</div></li>`;
+  if (profile.email)    contactEl.innerHTML += `<li class="list-group-item px-0"><small class="text-muted">Email</small><div>${profile.email}</div></li>`;
 
   renderCerts(1);
   renderProjects(1);
