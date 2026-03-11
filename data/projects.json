@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Customer Churn Prediction",
+    "description": "ML model with 92% accuracy using XGBoost on telecom data.",
+    "tags": ["Python", "XGBoost", "Pandas"],
+    "github": "https://github.com/you/project-name",
+    "demo": "",
+    "date": "2024-03"
+  }
+]
