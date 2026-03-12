@@ -6,155 +6,219 @@
   <title>Portfolio</title>
   <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
   <style>
-    body { padding-top: 56px; background: #f5f5f5; }
+    /* ── Apple-style design tokens ── */
+    :root {
+      --bg:          #f5f5f7;
+      --surface:     #ffffff;
+      --surface-2:   #f5f5f7;
+      --border:      #d2d2d7;
+      --accent:      #0071e3;
+      --accent-hover:#0077ed;
+      --text-primary:   #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-tertiary:  #aeaeb2;
+      --nav-bg:      rgba(255,255,255,0.85);
+      --nav-border:  rgba(0,0,0,0.08);
+      --radius:      12px;
+      --radius-sm:   8px;
+      --shadow-card: 0 2px 12px rgba(0,0,0,0.07);
+      --shadow-hover: 0 8px 28px rgba(0,0,0,0.12);
+      --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+    }
 
-    /* ── Navbar ── */
-    .navbar { background: #2b2b2b !important; }
-    .navbar-brand { color: #fff !important; font-weight: 700; font-size: 1.3rem; cursor: pointer; }
-    .navbar-nav .nav-link { color: #ccc !important; }
-    .navbar-nav .nav-link:hover { color: #fff !important; }
-    .nav-divider { color: #666; padding: 0 0.25rem; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      padding-top: 52px;
+      background: var(--bg);
+      font-family: var(--font);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
 
-    /* ── Dropdown panels — slide down ── */
+    /* ── Navbar — frosted glass Apple style ── */
+    .navbar {
+      background: var(--nav-bg) !important;
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--nav-border) !important;
+      box-shadow: none !important;
+    }
+    .navbar-brand {
+      color: var(--text-primary) !important;
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+    }
+    .navbar-nav .nav-link {
+      color: var(--text-secondary) !important;
+      font-size: 0.88rem;
+      font-weight: 400;
+      padding: 0.3rem 0.5rem !important;
+      transition: color 0.2s;
+    }
+    .navbar-nav .nav-link:hover { color: var(--text-primary) !important; }
+    .nav-divider { color: var(--border); padding: 0 0.15rem; font-size: 0.8rem; }
+
+    /* ── Dropdown panels ── */
     .dropdown-panel {
-      background: #fff; border-bottom: 3px solid #1a6fc4;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
       overflow: hidden; max-height: 0; opacity: 0;
       transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease;
       pointer-events: none;
     }
     .dropdown-panel.open { max-height: 400px; opacity: 1; pointer-events: auto; }
 
-    /* ── Panel layout ── */
+    /* Panel layout */
     .panel-inner { display: flex; align-items: stretch; max-height: 320px; }
     .panel-stat-col {
       min-width: 160px; display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      padding: 1.5rem 1.25rem; border-right: 1px solid #dee2e6; background: #f8f9fa;
+      padding: 1.5rem 1.25rem; border-right: 1px solid var(--border); background: var(--surface-2);
     }
-    .panel-stat-col .big-num { font-size: 3.5rem; font-weight: 800; color: #1a6fc4; line-height: 1; }
-    .panel-stat-col .big-label { font-size: 0.8rem; color: #777; margin-top: 0.3rem; text-align: center; }
-    .panel-list-col { flex: 1; overflow-y: auto; max-height: 320px; padding: 0.5rem 0; }
-    .panel-list-col::-webkit-scrollbar { width: 5px; }
-    .panel-list-col::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+    .panel-stat-col .big-num { font-size: 3.5rem; font-weight: 700; color: var(--accent); line-height: 1; letter-spacing: -0.03em; }
+    .panel-stat-col .big-label { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.3rem; text-align: center; font-weight: 500; }
+    .panel-list-col { flex: 1; overflow-y: auto; max-height: 320px; padding: 0.4rem 0; }
+    .panel-list-col::-webkit-scrollbar { width: 4px; }
+    .panel-list-col::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
     .panel-list-item {
-      display: flex; align-items: center; padding: 0.5rem 1.25rem; cursor: pointer;
-      border-bottom: 1px solid #f0f0f0; transition: background 0.15s; color: #333;
+      display: flex; align-items: center; padding: 0.48rem 1.25rem; cursor: pointer;
+      border-bottom: 1px solid var(--surface-2); transition: background 0.12s; color: var(--text-primary);
     }
-    .panel-list-item:hover { background: #e8f0fb; color: #1a6fc4; }
-    .panel-list-item .item-num { font-size: 0.72rem; color: #aaa; min-width: 28px; font-weight: 600; }
-    .panel-list-item .item-emoji { font-size: 1.1rem; margin-right: 0.6rem; }
-    .panel-list-item .item-title { font-size: 0.85rem; font-weight: 500; }
-    .panel-list-item .item-meta { font-size: 0.75rem; color: #999; margin-left: auto; padding-left: 0.5rem; white-space: nowrap; }
-    .panel-list-item .arrow { font-size: 0.75rem; color: #ccc; margin-left: 0.5rem; }
-    .panel-list-item:hover .arrow { color: #1a6fc4; }
+    .panel-list-item:hover { background: #f0f7ff; color: var(--accent); }
+    .panel-list-item .item-num { font-size: 0.7rem; color: var(--text-tertiary); min-width: 26px; font-weight: 500; }
+    .panel-list-item .item-emoji { font-size: 1rem; margin-right: 0.55rem; }
+    .panel-list-item .item-title { font-size: 0.84rem; font-weight: 400; }
+    .panel-list-item .item-meta { font-size: 0.73rem; color: var(--text-tertiary); margin-left: auto; padding-left: 0.5rem; white-space: nowrap; }
+    .panel-list-item .arrow { font-size: 0.75rem; color: var(--text-tertiary); margin-left: 0.5rem; }
+    .panel-list-item:hover .arrow { color: var(--accent); }
     .about-inner { padding: 1.5rem 0; }
+    .about-inner h4 { font-weight: 600; letter-spacing: -0.02em; }
+    .about-inner p { color: var(--text-secondary); }
 
-    /* ── Main layout: sidebar + grid ── */
-    .main-layout { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.5rem 0 0; }
+    /* ── Main layout ── */
+    .main-layout { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.5rem 0 2rem; }
 
     /* ── Category sidebar ── */
     .cat-sidebar {
-      width: 200px;
-      min-width: 200px;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
+      width: 195px; min-width: 195px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       overflow: hidden;
-      position: sticky;
-      top: 70px;
+      position: sticky; top: 64px;
+      box-shadow: var(--shadow-card);
     }
     .cat-sidebar-title {
-      background: #2b2b2b;
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.6rem 1rem;
-      letter-spacing: 0.05em;
+      background: var(--surface-2);
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.65rem 1rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
     }
     .cat-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.55rem 1rem;
-      cursor: pointer;
-      border-bottom: 1px solid #f0f0f0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.6rem 1rem; cursor: pointer;
+      border-bottom: 1px solid var(--surface-2);
       transition: background 0.15s, color 0.15s;
-      font-size: 0.84rem;
-      color: #444;
+      font-size: 0.84rem; color: var(--text-primary);
     }
     .cat-item:last-child { border-bottom: none; }
-    .cat-item:hover { background: #e8f0fb; color: #1a6fc4; }
-    .cat-item.active { background: #1a6fc4; color: #fff; font-weight: 600; }
-    .cat-item.active .cat-count { background: rgba(255,255,255,0.25); color: #fff; }
+    .cat-item:hover { background: #f0f7ff; color: var(--accent); }
+    .cat-item.active { background: var(--accent); color: #fff; font-weight: 500; }
+    .cat-item.active .cat-count { background: rgba(255,255,255,0.22); color: #fff; }
     .cat-item .cat-name { flex: 1; }
     .cat-count {
-      background: #f0f0f0;
-      color: #888;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 0.1rem 0.45rem;
-      border-radius: 10px;
-      min-width: 22px;
-      text-align: center;
+      background: var(--surface-2); color: var(--text-secondary);
+      font-size: 0.7rem; font-weight: 600;
+      padding: 0.1rem 0.45rem; border-radius: 20px; min-width: 22px; text-align: center;
     }
 
-    /* ── Project grid area ── */
+    /* ── Grid area ── */
     .grid-area { flex: 1; min-width: 0; }
     .section-bar {
       display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 2px solid #dee2e6; padding-bottom: 0.4rem; margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.25rem;
     }
-    .section-bar .section-title { font-size: 1rem; font-weight: 700; color: #333; margin: 0; }
-    .section-bar .counter { font-size: 0.82rem; font-weight: 600; color: #888; }
+    .section-bar .section-title {
+      font-size: 1.1rem; font-weight: 600; color: var(--text-primary);
+      margin: 0; letter-spacing: -0.02em;
+    }
+    .section-bar .counter { font-size: 0.8rem; font-weight: 500; color: var(--text-tertiary); }
 
-    /* ── Project card ── */
+    /* ── Project card — Apple light ── */
     .proj-card {
-      background: #fff; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; height: 100%;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden; height: 100%;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
-    .proj-card.highlight { border-color: #1a6fc4; box-shadow: 0 0 0 3px rgba(26,111,196,0.15); }
-    .proj-card .thumb { width: 100%; height: 165px; object-fit: cover; display: block; }
+    .proj-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .proj-card.highlight { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.15); }
+    .proj-card .thumb { width: 100%; height: 155px; object-fit: cover; display: block; }
     .proj-card .thumb-placeholder {
-      width: 100%; height: 165px;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      width: 100%; height: 155px;
+      background: linear-gradient(135deg, #e8f0fe 0%, #fce4ec 50%, #e8f5e9 100%);
       display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem; color: #4fc3f7;
+      font-size: 2.6rem;
     }
-    .proj-card .card-body { padding: 0.65rem 0.75rem 0.85rem; text-align: center; }
-    .proj-card .card-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 0.55rem; color: #111; }
+    .proj-card .card-body { padding: 0.75rem 0.9rem 1rem; text-align: center; }
+    .proj-card .card-title {
+      font-weight: 600; font-size: 0.88rem; margin-bottom: 0.6rem;
+      color: var(--text-primary); letter-spacing: -0.01em; line-height: 1.3;
+    }
 
-    .btn-blue {
-      background: #1a6fc4; border: none; color: #fff !important;
-      font-size: 0.8rem; padding: 0.3rem 0.85rem; border-radius: 4px;
-      margin: 0.15rem; display: inline-block; text-decoration: none; cursor: pointer;
+    /* Apple-style buttons */
+    .btn-apple {
+      display: inline-block; font-size: 0.78rem; font-weight: 500;
+      padding: 0.3rem 0.9rem; border-radius: 20px; margin: 0.15rem;
+      text-decoration: none; cursor: pointer; transition: all 0.18s;
+      border: 1.5px solid var(--accent); color: var(--accent);
+      background: transparent;
     }
-    .btn-blue:hover { background: #145ba0; color: #fff !important; }
+    .btn-apple:hover { background: var(--accent); color: #fff !important; }
+    .btn-apple.filled { background: var(--accent); color: #fff !important; border-color: var(--accent); }
+    .btn-apple.filled:hover { background: var(--accent-hover); }
 
     /* ── Footer ── */
-    .footer-icons { background: #f5f5f5; border-top: 1px solid #ddd; padding: 0.85rem 1rem; margin-top: 2rem; }
-    .footer-nav-row { display: flex; align-items: center; justify-content: space-between; max-width: 480px; margin: 0 auto; }
-    .footer-social { display: flex; align-items: center; gap: 0.5rem; }
-    .footer-icons a { display: inline-block; color: #222; transition: color 0.2s; }
-    .footer-icons a:hover { color: #1a6fc4; }
-    .footer-icons svg { width: 30px; height: 30px; vertical-align: middle; }
-    .nav-arrow {
-      background: none; border: 1px solid #ccc; border-radius: 4px;
-      padding: 0.3rem 0.8rem; font-size: 0.82rem; color: #333; cursor: pointer; transition: all 0.2s;
+    .footer-icons {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 0.9rem 1rem; margin-top: 1rem;
     }
-    .nav-arrow:hover:not(:disabled) { background: #1a6fc4; border-color: #1a6fc4; color: #fff; }
-    .nav-arrow:disabled { opacity: 0.3; cursor: default; }
+    .footer-nav-row { display: flex; align-items: center; justify-content: space-between; max-width: 480px; margin: 0 auto; }
+    .footer-social { display: flex; align-items: center; gap: 0.6rem; }
+    .footer-icons a { display: inline-block; color: var(--text-secondary); transition: color 0.2s; }
+    .footer-icons a:hover { color: var(--accent); }
+    .footer-icons svg { width: 26px; height: 26px; vertical-align: middle; }
+    .nav-arrow {
+      background: none; border: 1px solid var(--border); border-radius: 20px;
+      padding: 0.3rem 1rem; font-size: 0.8rem; color: var(--text-secondary);
+      cursor: pointer; transition: all 0.18s; font-family: var(--font);
+    }
+    .nav-arrow:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .nav-arrow:disabled { opacity: 0.25; cursor: default; }
     .footer-contact {
-      background: #fff; border-top: 1px solid #ddd;
-      padding: 0.6rem 0; text-align: center; font-size: 0.84rem; color: #444;
+      background: var(--surface-2); border-top: 1px solid var(--border);
+      padding: 0.55rem 0; text-align: center;
+      font-size: 0.8rem; color: var(--text-secondary);
     }
 
-    /* ── Mobile: hide sidebar, show on md+ ── */
+    /* ── Mobile ── */
     @media (max-width: 767px) {
       .main-layout { flex-direction: column; }
-      .cat-sidebar { width: 100%; min-width: 0; position: static; display: flex; flex-wrap: wrap; border-radius: 6px; }
+      .cat-sidebar { width: 100%; min-width: 0; position: static; display: flex; flex-wrap: wrap; }
       .cat-sidebar-title { width: 100%; }
-      .cat-item { width: auto; flex: 1; min-width: 120px; border-right: 1px solid #f0f0f0; border-bottom: none; }
+      .cat-item { flex: 1; min-width: 110px; border-right: 1px solid var(--surface-2); border-bottom: none; }
     }
   </style>
 </head>
@@ -164,11 +228,12 @@
 <nav class="navbar navbar-expand-md fixed-top">
   <div class="container">
     <span class="navbar-brand" id="nav-name" onclick="closePanels()">Portfolio</span>
-    <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+      style="border-color:var(--border)">
+      <span class="navbar-toggler-icon" style="filter:invert(0.5)"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navMenu">
-      <ul class="navbar-nav align-items-center">
+      <ul class="navbar-nav align-items-center gap-1">
         <li class="nav-item"><a class="nav-link" href="#" onclick="togglePanel(event,'about-panel')">About</a></li>
         <li class="nav-item"><span class="nav-divider d-none d-md-inline">|</span></li>
         <li class="nav-item"><a class="nav-link" href="#" onclick="togglePanel(event,'proj-panel')">Projects</a></li>
@@ -187,11 +252,11 @@
     <div class="row">
       <div class="col-md-8">
         <h4 class="fw-bold mb-1" id="about-name"></h4>
-        <p class="text-muted small mb-1" id="about-title"></p>
+        <p class="small mb-1" id="about-title" style="color:var(--text-secondary)"></p>
         <p class="small" id="about-bio"></p>
       </div>
       <div class="col-md-4">
-        <ul class="list-unstyled small text-muted mt-2">
+        <ul class="list-unstyled small mt-2" style="color:var(--text-secondary)">
           <li id="about-location"></li>
           <li id="about-phone"></li>
           <li id="about-email"></li>
@@ -232,13 +297,11 @@
 <div class="container">
   <div class="main-layout">
 
-    <!-- Category sidebar -->
-    <div class="cat-sidebar" id="cat-sidebar">
+    <div class="cat-sidebar">
       <div class="cat-sidebar-title">Categories</div>
       <div id="cat-list"></div>
     </div>
 
-    <!-- Project grid -->
     <div class="grid-area">
       <div class="section-bar">
         <span class="section-title" id="grid-title">Projects</span>
@@ -270,152 +333,120 @@
 <script src="assets/vendor/bootstrap.bundle.min.js"></script>
 <script>
   const PER_PAGE = 9;
-  let currentPage   = 1;
-  let allProjects   = [];
-  let allCerts      = [];
-  let filteredProjs = [];   // currently displayed subset
-  let activeCategory = 'All';
+  let currentPage = 1, allProjects = [], allCerts = [], filteredProjs = [], activeCategory = 'All';
 
-  /* ── Toggle navbar panels ── */
   function togglePanel(e, id) {
     e.preventDefault();
-    ['about-panel','proj-panel','cert-panel'].forEach(p => {
-      const el = document.getElementById(p);
-      el.classList[p === id ? 'toggle' : 'remove']('open');
-    });
+    ['about-panel','proj-panel','cert-panel'].forEach(p =>
+      document.getElementById(p).classList[p===id?'toggle':'remove']('open'));
   }
   function closePanels() {
     ['about-panel','proj-panel','cert-panel'].forEach(p =>
       document.getElementById(p).classList.remove('open'));
   }
 
-  /* ── Select a category ── */
   function selectCategory(cat) {
     activeCategory = cat;
-    filteredProjs  = cat === 'All'
-      ? allProjects
-      : allProjects.filter(p => (p.category || 'Uncategorised') === cat);
-
-    /* Update sidebar active state */
-    document.querySelectorAll('.cat-item').forEach(el => {
-      el.classList.toggle('active', el.dataset.cat === cat);
-    });
-
-    /* Update grid title */
-    document.getElementById('grid-title').textContent =
-      cat === 'All' ? 'Projects' : cat;
-
+    filteredProjs  = cat === 'All' ? allProjects
+                   : allProjects.filter(p => (p.category || 'Uncategorised') === cat);
+    document.querySelectorAll('.cat-item').forEach(el =>
+      el.classList.toggle('active', el.dataset.cat === cat));
+    document.getElementById('grid-title').textContent = cat === 'All' ? 'Projects' : cat;
     renderProjects(1);
   }
 
-  /* ── Build category sidebar ── */
   function buildCategorySidebar() {
     const counts = {};
-    allProjects.forEach(p => {
-      const c = p.category || 'Uncategorised';
-      counts[c] = (counts[c] || 0) + 1;
-    });
-
+    allProjects.forEach(p => { const c = p.category||'Uncategorised'; counts[c]=(counts[c]||0)+1; });
     const cats = Object.keys(counts).sort();
-    const listEl = document.getElementById('cat-list');
-
-    /* All row first */
-    listEl.innerHTML = `
-      <div class="cat-item active" data-cat="All" onclick="selectCategory('All')">
-        <span class="cat-name">All</span>
-        <span class="cat-count">${allProjects.length}</span>
-      </div>` +
-      cats.map(cat => `
-        <div class="cat-item" data-cat="${cat}" onclick="selectCategory('${cat}')">
-          <span class="cat-name">${cat}</span>
-          <span class="cat-count">${counts[cat]}</span>
-        </div>`).join('');
+    document.getElementById('cat-list').innerHTML =
+      `<div class="cat-item active" data-cat="All" onclick="selectCategory('All')">
+         <span class="cat-name">All</span>
+         <span class="cat-count">${allProjects.length}</span>
+       </div>` +
+      cats.map(cat =>
+        `<div class="cat-item" data-cat="${cat}" onclick="selectCategory('${cat}')">
+           <span class="cat-name">${cat}</span>
+           <span class="cat-count">${counts[cat]}</span>
+         </div>`).join('');
   }
 
-  /* ── Render project grid ── */
   function renderProjects(page) {
     currentPage = page;
     const total      = filteredProjs.length;
     const totalPages = Math.ceil(total / PER_PAGE) || 1;
-    const start      = (page - 1) * PER_PAGE;
+    const start      = (page-1) * PER_PAGE;
     const end        = Math.min(start + PER_PAGE, total);
 
-    document.getElementById('proj-counter').textContent =
-      total === 0 ? '0 projects' : end + ' / ' + total;
-
-    document.getElementById('proj-container').innerHTML =
-      total === 0
-        ? '<div class="col-12"><p class="text-muted small mt-2">No projects in this category yet.</p></div>'
-        : filteredProjs.slice(start, end).map((p, i) => `
-            <div class="col-6 col-md-4">
-              <div class="proj-card" id="proj-card-${start + i}">
-                ${p.image
-                  ? `<img src="${p.image}" class="thumb" alt="${p.title}">`
-                  : `<div class="thumb-placeholder">${p.emoji || '📁'}</div>`}
-                <div class="card-body">
-                  <div class="card-title">${p.title}</div>
-                  <a href="${p.readme || '#'}" target="_blank" class="btn-blue">ReadMe</a>
-<a href="${p.github || '#'}" target="_blank" class="btn-blue">Source Code</a>
-                </div>
+    document.getElementById('proj-counter').textContent = total===0 ? '0 projects' : end+' / '+total;
+    document.getElementById('proj-container').innerHTML = total === 0
+      ? '<div class="col-12"><p style="color:var(--text-tertiary);font-size:0.88rem;margin-top:0.5rem">No projects in this category yet.</p></div>'
+      : filteredProjs.slice(start, end).map((p,i) => `
+          <div class="col-6 col-md-4">
+            <div class="proj-card" id="proj-card-${start+i}">
+              ${p.image
+                ? `<img src="${p.image}" class="thumb" alt="${p.title}">`
+                : `<div class="thumb-placeholder">${p.emoji||'📁'}</div>`}
+              <div class="card-body">
+                <div class="card-title">${p.title}</div>
+                <a href="${p.readme||'#'}" target="_blank" class="btn-apple">ReadMe</a>
+                <a href="${p.github||'#'}" target="_blank" class="btn-apple filled">Source Code</a>
               </div>
-            </div>`).join('');
+            </div>
+          </div>`).join('');
 
     document.getElementById('btn-prev').disabled = page <= 1;
     document.getElementById('btn-next').disabled = page >= totalPages;
   }
 
   function changePage(dir) {
-    const newPage    = currentPage + dir;
-    const totalPages = Math.ceil(filteredProjs.length / PER_PAGE) || 1;
-    if (newPage >= 1 && newPage <= totalPages) renderProjects(newPage);
+    const newPage = currentPage + dir;
+    const total   = Math.ceil(filteredProjs.length / PER_PAGE) || 1;
+    if (newPage >= 1 && newPage <= total) renderProjects(newPage);
   }
 
-  /* ── Navigate from navbar Projects list ── */
   function goToProject(globalIndex) {
     closePanels();
-    /* Switch to All category first */
     selectCategory('All');
-    const page = Math.ceil((globalIndex + 1) / PER_PAGE);
+    const page = Math.ceil((globalIndex+1) / PER_PAGE);
     renderProjects(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({top:0,behavior:'smooth'});
     setTimeout(() => {
-      const posOnPage = globalIndex % PER_PAGE;
+      const pos   = globalIndex % PER_PAGE;
       const cards = document.querySelectorAll('#proj-container .proj-card');
-      if (cards[posOnPage]) {
-        cards[posOnPage].classList.add('highlight');
-        cards[posOnPage].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(() => cards[posOnPage].classList.remove('highlight'), 2000);
+      if (cards[pos]) {
+        cards[pos].classList.add('highlight');
+        cards[pos].scrollIntoView({behavior:'smooth',block:'center'});
+        setTimeout(() => cards[pos].classList.remove('highlight'), 2000);
       }
     }, 150);
   }
 
-  /* ── Build navbar scrollable lists ── */
   function buildProjList() {
     document.getElementById('total-proj-num').textContent = allProjects.length;
     document.getElementById('proj-list').innerHTML =
-      allProjects.map((p, i) => `
-        <div class="panel-list-item" onclick="goToProject(${i})">
-          <span class="item-num">${i + 1}.</span>
-          <span class="item-emoji">${p.emoji || '📁'}</span>
-          <span class="item-title">${p.title}</span>
-          <span class="arrow">›</span>
-        </div>`).join('');
+      allProjects.map((p,i) =>
+        `<div class="panel-list-item" onclick="goToProject(${i})">
+           <span class="item-num">${i+1}.</span>
+           <span class="item-emoji">${p.emoji||'📁'}</span>
+           <span class="item-title">${p.title}</span>
+           <span class="arrow">›</span>
+         </div>`).join('');
   }
 
   function buildCertList() {
     document.getElementById('total-cert-num').textContent = allCerts.length;
     document.getElementById('cert-list').innerHTML =
-      allCerts.map((c, i) => `
-        <div class="panel-list-item" ${c.url ? `onclick="window.open('${c.url}','_blank')"` : ''}>
-          <span class="item-num">${i + 1}.</span>
-          <span class="item-emoji">🏅</span>
-          <span class="item-title">${c.title}</span>
-          <span class="item-meta">${c.date}</span>
-          <span class="arrow">↗</span>
-        </div>`).join('');
+      allCerts.map((c,i) =>
+        `<div class="panel-list-item" ${c.url?`onclick="window.open('${c.url}','_blank')"`:''}>
+           <span class="item-num">${i+1}.</span>
+           <span class="item-emoji">🏅</span>
+           <span class="item-title">${c.title}</span>
+           <span class="item-meta">${c.date}</span>
+           <span class="arrow">↗</span>
+         </div>`).join('');
   }
 
-  /* ── Load all JSON ── */
   async function init() {
     const ts = '?v=' + Date.now();
     const [profile, certs, projects] = await Promise.all([
@@ -428,12 +459,10 @@
     allCerts      = certs;
     filteredProjs = projects;
 
-    /* Navbar */
     document.title = profile.name + ' | Portfolio';
     document.getElementById('nav-name').textContent = profile.name;
     if (profile.cv) document.getElementById('cv-link').href = profile.cv;
 
-    /* About panel */
     document.getElementById('about-name').textContent  = profile.name;
     document.getElementById('about-title').textContent = profile.title || '';
     document.getElementById('about-bio').textContent   = profile.bio   || '';
@@ -441,17 +470,15 @@
     if (profile.phone)    document.getElementById('about-phone').textContent    = '📞 ' + profile.phone;
     if (profile.email)    document.getElementById('about-email').textContent    = '✉️ '  + profile.email;
     if (profile.website)  document.getElementById('about-website').innerHTML    =
-      '🌐 <a href="' + profile.website + '" target="_blank">' + profile.website + '</a>';
+      '🌐 <a href="'+profile.website+'" target="_blank" style="color:var(--accent)">'+profile.website+'</a>';
 
-    /* Footer */
     if (profile.github)   document.getElementById('github-link').href   = profile.github;
     if (profile.linkedin) document.getElementById('linkedin-link').href = profile.linkedin;
     const parts = [];
     if (profile.phone) parts.push('Phone: ' + profile.phone);
-    if (profile.email) parts.push('Email: <strong>' + profile.email + '</strong>');
+    if (profile.email) parts.push('Email: <strong style="color:var(--text-primary)">' + profile.email + '</strong>');
     document.getElementById('footer-contact').innerHTML = parts.join(' &nbsp;|&nbsp; ');
 
-    /* Build everything */
     buildCategorySidebar();
     buildProjList();
     buildCertList();
