@@ -1,14 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RQ1FVGD6C2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RQ1FVGD6C2');
-</script>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -17,31 +8,23 @@
   <style>
     body { padding-top: 56px; background: #f5f5f5; }
 
-    /* Navbar */
+    /* ── Navbar ── */
     .navbar { background: #2b2b2b !important; }
     .navbar-brand { color: #fff !important; font-weight: 700; font-size: 1.3rem; cursor: pointer; }
     .navbar-nav .nav-link { color: #ccc !important; }
     .navbar-nav .nav-link:hover { color: #fff !important; }
     .nav-divider { color: #666; padding: 0 0.25rem; }
 
-    /* Dropdown panels — slide down animation */
+    /* ── Dropdown panels — slide down ── */
     .dropdown-panel {
-      background: #fff;
-      border-bottom: 3px solid #1a6fc4;
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1),
-                  opacity 0.28s ease;
+      background: #fff; border-bottom: 3px solid #1a6fc4;
+      overflow: hidden; max-height: 0; opacity: 0;
+      transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease;
       pointer-events: none;
     }
-    .dropdown-panel.open {
-      max-height: 400px;
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .dropdown-panel.open { max-height: 400px; opacity: 1; pointer-events: auto; }
 
-    /* Panel layout */
+    /* ── Panel layout ── */
     .panel-inner { display: flex; align-items: stretch; max-height: 320px; }
     .panel-stat-col {
       min-width: 160px; display: flex; flex-direction: column;
@@ -50,17 +33,12 @@
     }
     .panel-stat-col .big-num { font-size: 3.5rem; font-weight: 800; color: #1a6fc4; line-height: 1; }
     .panel-stat-col .big-label { font-size: 0.8rem; color: #777; margin-top: 0.3rem; text-align: center; }
-
-    /* Scrollable list */
     .panel-list-col { flex: 1; overflow-y: auto; max-height: 320px; padding: 0.5rem 0; }
     .panel-list-col::-webkit-scrollbar { width: 5px; }
     .panel-list-col::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
-
     .panel-list-item {
-      display: flex; align-items: center;
-      padding: 0.5rem 1.25rem; cursor: pointer;
-      border-bottom: 1px solid #f0f0f0;
-      transition: background 0.15s; text-decoration: none; color: #333;
+      display: flex; align-items: center; padding: 0.5rem 1.25rem; cursor: pointer;
+      border-bottom: 1px solid #f0f0f0; transition: background 0.15s; color: #333;
     }
     .panel-list-item:hover { background: #e8f0fb; color: #1a6fc4; }
     .panel-list-item .item-num { font-size: 0.72rem; color: #aaa; min-width: 28px; font-weight: 600; }
@@ -69,11 +47,60 @@
     .panel-list-item .item-meta { font-size: 0.75rem; color: #999; margin-left: auto; padding-left: 0.5rem; white-space: nowrap; }
     .panel-list-item .arrow { font-size: 0.75rem; color: #ccc; margin-left: 0.5rem; }
     .panel-list-item:hover .arrow { color: #1a6fc4; }
-
-    /* About panel */
     .about-inner { padding: 1.5rem 0; }
 
-    /* Section bar */
+    /* ── Main layout: sidebar + grid ── */
+    .main-layout { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.5rem 0 0; }
+
+    /* ── Category sidebar ── */
+    .cat-sidebar {
+      width: 200px;
+      min-width: 200px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+      position: sticky;
+      top: 70px;
+    }
+    .cat-sidebar-title {
+      background: #2b2b2b;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.6rem 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .cat-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.15s, color 0.15s;
+      font-size: 0.84rem;
+      color: #444;
+    }
+    .cat-item:last-child { border-bottom: none; }
+    .cat-item:hover { background: #e8f0fb; color: #1a6fc4; }
+    .cat-item.active { background: #1a6fc4; color: #fff; font-weight: 600; }
+    .cat-item.active .cat-count { background: rgba(255,255,255,0.25); color: #fff; }
+    .cat-item .cat-name { flex: 1; }
+    .cat-count {
+      background: #f0f0f0;
+      color: #888;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.1rem 0.45rem;
+      border-radius: 10px;
+      min-width: 22px;
+      text-align: center;
+    }
+
+    /* ── Project grid area ── */
+    .grid-area { flex: 1; min-width: 0; }
     .section-bar {
       display: flex; align-items: center; justify-content: space-between;
       border-bottom: 2px solid #dee2e6; padding-bottom: 0.4rem; margin-bottom: 1.25rem;
@@ -81,7 +108,7 @@
     .section-bar .section-title { font-size: 1rem; font-weight: 700; color: #333; margin: 0; }
     .section-bar .counter { font-size: 0.82rem; font-weight: 600; color: #888; }
 
-    /* Project card */
+    /* ── Project card ── */
     .proj-card {
       background: #fff; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; height: 100%;
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -104,7 +131,7 @@
     }
     .btn-blue:hover { background: #145ba0; color: #fff !important; }
 
-    /* Footer */
+    /* ── Footer ── */
     .footer-icons { background: #f5f5f5; border-top: 1px solid #ddd; padding: 0.85rem 1rem; margin-top: 2rem; }
     .footer-nav-row { display: flex; align-items: center; justify-content: space-between; max-width: 480px; margin: 0 auto; }
     .footer-social { display: flex; align-items: center; gap: 0.5rem; }
@@ -121,12 +148,19 @@
       background: #fff; border-top: 1px solid #ddd;
       padding: 0.6rem 0; text-align: center; font-size: 0.84rem; color: #444;
     }
-    main { padding: 1.5rem 0 0; }
+
+    /* ── Mobile: hide sidebar, show on md+ ── */
+    @media (max-width: 767px) {
+      .main-layout { flex-direction: column; }
+      .cat-sidebar { width: 100%; min-width: 0; position: static; display: flex; flex-wrap: wrap; border-radius: 6px; }
+      .cat-sidebar-title { width: 100%; }
+      .cat-item { width: auto; flex: 1; min-width: 120px; border-right: 1px solid #f0f0f0; border-bottom: none; }
+    }
   </style>
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- ── Navbar ── -->
 <nav class="navbar navbar-expand-md fixed-top">
   <div class="container">
     <span class="navbar-brand" id="nav-name" onclick="closePanels()">Portfolio</span>
@@ -147,7 +181,7 @@
   </div>
 </nav>
 
-<!-- About panel -->
+<!-- ── About panel ── -->
 <div id="about-panel" class="dropdown-panel">
   <div class="container about-inner">
     <div class="row">
@@ -168,7 +202,7 @@
   </div>
 </div>
 
-<!-- Projects list panel -->
+<!-- ── Projects list panel ── -->
 <div id="proj-panel" class="dropdown-panel">
   <div class="container p-0">
     <div class="panel-inner">
@@ -181,7 +215,7 @@
   </div>
 </div>
 
-<!-- Certifications list panel -->
+<!-- ── Certifications list panel ── -->
 <div id="cert-panel" class="dropdown-panel">
   <div class="container p-0">
     <div class="panel-inner">
@@ -194,20 +228,29 @@
   </div>
 </div>
 
-<!-- Main: 9-grid project layout -->
-<main>
-  <div class="container">
-    <div class="mb-4">
+<!-- ── Main: sidebar + project grid ── -->
+<div class="container">
+  <div class="main-layout">
+
+    <!-- Category sidebar -->
+    <div class="cat-sidebar" id="cat-sidebar">
+      <div class="cat-sidebar-title">Categories</div>
+      <div id="cat-list"></div>
+    </div>
+
+    <!-- Project grid -->
+    <div class="grid-area">
       <div class="section-bar">
-        <span class="section-title">Projects</span>
+        <span class="section-title" id="grid-title">Projects</span>
         <span class="counter" id="proj-counter"></span>
       </div>
       <div class="row g-3" id="proj-container"></div>
     </div>
-  </div>
-</main>
 
-<!-- Footer -->
+  </div>
+</div>
+
+<!-- ── Footer ── -->
 <div class="footer-icons">
   <div class="footer-nav-row">
     <button id="btn-prev" class="nav-arrow" onclick="changePage(-1)">&#8592; Prev</button>
@@ -227,31 +270,111 @@
 <script src="assets/vendor/bootstrap.bundle.min.js"></script>
 <script>
   const PER_PAGE = 9;
-  let currentPage = 1;
-  let allProjects = [], allCerts = [];
+  let currentPage   = 1;
+  let allProjects   = [];
+  let allCerts      = [];
+  let filteredProjs = [];   // currently displayed subset
+  let activeCategory = 'All';
 
-  /* ── Toggle panels ── */
+  /* ── Toggle navbar panels ── */
   function togglePanel(e, id) {
     e.preventDefault();
-    const panels = ['about-panel','proj-panel','cert-panel'];
-    panels.forEach(p => {
+    ['about-panel','proj-panel','cert-panel'].forEach(p => {
       const el = document.getElementById(p);
-      if (p === id) {
-        el.classList.toggle('open');
-      } else {
-        el.classList.remove('open');
-      }
+      el.classList[p === id ? 'toggle' : 'remove']('open');
     });
   }
   function closePanels() {
-    ['about-panel','proj-panel','cert-panel'].forEach(p => {
-      document.getElementById(p).classList.remove('open');
-    });
+    ['about-panel','proj-panel','cert-panel'].forEach(p =>
+      document.getElementById(p).classList.remove('open'));
   }
 
-  /* ── Click item in Projects list → go to that page & highlight card ── */
+  /* ── Select a category ── */
+  function selectCategory(cat) {
+    activeCategory = cat;
+    filteredProjs  = cat === 'All'
+      ? allProjects
+      : allProjects.filter(p => (p.category || 'Uncategorised') === cat);
+
+    /* Update sidebar active state */
+    document.querySelectorAll('.cat-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.cat === cat);
+    });
+
+    /* Update grid title */
+    document.getElementById('grid-title').textContent =
+      cat === 'All' ? 'Projects' : cat;
+
+    renderProjects(1);
+  }
+
+  /* ── Build category sidebar ── */
+  function buildCategorySidebar() {
+    const counts = {};
+    allProjects.forEach(p => {
+      const c = p.category || 'Uncategorised';
+      counts[c] = (counts[c] || 0) + 1;
+    });
+
+    const cats = Object.keys(counts).sort();
+    const listEl = document.getElementById('cat-list');
+
+    /* All row first */
+    listEl.innerHTML = `
+      <div class="cat-item active" data-cat="All" onclick="selectCategory('All')">
+        <span class="cat-name">All</span>
+        <span class="cat-count">${allProjects.length}</span>
+      </div>` +
+      cats.map(cat => `
+        <div class="cat-item" data-cat="${cat}" onclick="selectCategory('${cat}')">
+          <span class="cat-name">${cat}</span>
+          <span class="cat-count">${counts[cat]}</span>
+        </div>`).join('');
+  }
+
+  /* ── Render project grid ── */
+  function renderProjects(page) {
+    currentPage = page;
+    const total      = filteredProjs.length;
+    const totalPages = Math.ceil(total / PER_PAGE) || 1;
+    const start      = (page - 1) * PER_PAGE;
+    const end        = Math.min(start + PER_PAGE, total);
+
+    document.getElementById('proj-counter').textContent =
+      total === 0 ? '0 projects' : end + ' / ' + total;
+
+    document.getElementById('proj-container').innerHTML =
+      total === 0
+        ? '<div class="col-12"><p class="text-muted small mt-2">No projects in this category yet.</p></div>'
+        : filteredProjs.slice(start, end).map((p, i) => `
+            <div class="col-6 col-md-4">
+              <div class="proj-card" id="proj-card-${start + i}">
+                ${p.image
+                  ? `<img src="${p.image}" class="thumb" alt="${p.title}">`
+                  : `<div class="thumb-placeholder">${p.emoji || '📁'}</div>`}
+                <div class="card-body">
+                  <div class="card-title">${p.title}</div>
+                  ${p.readme ? `<a href="${p.readme}" target="_blank" class="btn-blue">ReadMe</a>` : ''}
+                  ${p.github ? `<a href="${p.github}" target="_blank" class="btn-blue">Source Code</a>` : ''}
+                </div>
+              </div>
+            </div>`).join('');
+
+    document.getElementById('btn-prev').disabled = page <= 1;
+    document.getElementById('btn-next').disabled = page >= totalPages;
+  }
+
+  function changePage(dir) {
+    const newPage    = currentPage + dir;
+    const totalPages = Math.ceil(filteredProjs.length / PER_PAGE) || 1;
+    if (newPage >= 1 && newPage <= totalPages) renderProjects(newPage);
+  }
+
+  /* ── Navigate from navbar Projects list ── */
   function goToProject(globalIndex) {
     closePanels();
+    /* Switch to All category first */
+    selectCategory('All');
     const page = Math.ceil((globalIndex + 1) / PER_PAGE);
     renderProjects(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -266,47 +389,7 @@
     }, 150);
   }
 
-  /* ── Click item in Certs list → just close panel (certs on same page) ── */
-  // function goToCert(globalIndex) {
-  //   closePanels();
-  //   window.scrollTo({ top: 0, behavior: 'smooth' });
-  // }
-
-  /* ── Render projects grid ── */
-  function renderProjects(page) {
-    currentPage = page;
-    const total      = allProjects.length;
-    const totalPages = Math.ceil(total / PER_PAGE);
-    const start      = (page - 1) * PER_PAGE;
-    const end        = Math.min(start + PER_PAGE, total);
-
-    document.getElementById('proj-counter').textContent = end + ' / ' + total;
-    document.getElementById('proj-container').innerHTML =
-      allProjects.slice(start, end).map((p, i) => `
-        <div class="col-6 col-md-4">
-          <div class="proj-card" id="proj-card-${start + i}">
-            ${p.image
-              ? `<img src="${p.image}" class="thumb" alt="${p.title}">`
-              : `<div class="thumb-placeholder">${p.emoji || '📁'}</div>`}
-            <div class="card-body">
-              <div class="card-title">${p.title}</div>
-              ${p.readme ? `<a href="${p.readme}" target="_blank" class="btn-blue">ReadMe</a>` : ''}
-              ${p.github ? `<a href="${p.github}" target="_blank" class="btn-blue">Source Code</a>` : ''}
-            </div>
-          </div>
-        </div>`).join('');
-
-    document.getElementById('btn-prev').disabled = page <= 1;
-    document.getElementById('btn-next').disabled = page >= totalPages;
-  }
-
-  function changePage(dir) {
-    const newPage    = currentPage + dir;
-    const totalPages = Math.ceil(allProjects.length / PER_PAGE);
-    if (newPage >= 1 && newPage <= totalPages) renderProjects(newPage);
-  }
-
-  /* ── Build scrollable panel lists ── */
+  /* ── Build navbar scrollable lists ── */
   function buildProjList() {
     document.getElementById('total-proj-num').textContent = allProjects.length;
     document.getElementById('proj-list').innerHTML =
@@ -319,7 +402,7 @@
         </div>`).join('');
   }
 
-function buildCertList() {
+  function buildCertList() {
     document.getElementById('total-cert-num').textContent = allCerts.length;
     document.getElementById('cert-list').innerHTML =
       allCerts.map((c, i) => `
@@ -341,8 +424,9 @@ function buildCertList() {
       fetch('data/projects.json'       + ts).then(r => r.json()),
     ]);
 
-    allProjects = projects;
-    allCerts    = certs;
+    allProjects   = projects;
+    allCerts      = certs;
+    filteredProjs = projects;
 
     /* Navbar */
     document.title = profile.name + ' | Portfolio';
@@ -367,7 +451,8 @@ function buildCertList() {
     if (profile.email) parts.push('Email: <strong>' + profile.email + '</strong>');
     document.getElementById('footer-contact').innerHTML = parts.join(' &nbsp;|&nbsp; ');
 
-    /* Build lists & grid */
+    /* Build everything */
+    buildCategorySidebar();
     buildProjList();
     buildCertList();
     renderProjects(1);
