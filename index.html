@@ -354,8 +354,8 @@
                   : `<div class="thumb-placeholder">${p.emoji || '📁'}</div>`}
                 <div class="card-body">
                   <div class="card-title">${p.title}</div>
-                  ${p.readme ? `<a href="${p.readme}" target="_blank" class="btn-blue">ReadMe</a>` : ''}
-                  ${p.github ? `<a href="${p.github}" target="_blank" class="btn-blue">Source Code</a>` : ''}
+                  <a href="${p.readme || '#'}" target="_blank" class="btn-blue">ReadMe</a>
+<a href="${p.github || '#'}" target="_blank" class="btn-blue">Source Code</a>
                 </div>
               </div>
             </div>`).join('');
