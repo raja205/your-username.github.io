@@ -1,218 +1,38 @@
 [
-  {
-    "title": "Customer Churn Prediction",
-    "emoji": "📊",
-    "readme": "https://github.com/yourusername/customer-churn#readme",
-    "github": "https://github.com/yourusername/customer-churn"
-  },
-  {
-    "title": "Sentiment Analysis NLP",
-    "emoji": "🧠",
-    "readme": "https://github.com/yourusername/sentiment-analysis#readme",
-    "github": "https://github.com/yourusername/sentiment-analysis"
-  },
-  {
-    "title": "House Price Predictor",
-    "emoji": "🏠",
-    "readme": "https://github.com/yourusername/house-price#readme",
-    "github": "https://github.com/yourusername/house-price"
-  },
-  {
-    "title": "Stock Market Forecasting",
-    "emoji": "📈",
-    "readme": "https://github.com/yourusername/stock-forecast#readme",
-    "github": "https://github.com/yourusername/stock-forecast"
-  },
-  {
-    "title": "Image Classification CNN",
-    "emoji": "🖼️",
-    "readme": "https://github.com/yourusername/image-classification#readme",
-    "github": "https://github.com/yourusername/image-classification"
-  },
-  {
-    "title": "Fraud Detection System",
-    "emoji": "🔍",
-    "readme": "https://github.com/yourusername/fraud-detection#readme",
-    "github": "https://github.com/yourusername/fraud-detection"
-  },
-  {
-    "title": "Recommendation Engine",
-    "emoji": "🎯",
-    "readme": "https://github.com/yourusername/recommendation-engine#readme",
-    "github": "https://github.com/yourusername/recommendation-engine"
-  },
-  {
-    "title": "COVID-19 Data Analysis",
-    "emoji": "🦠",
-    "readme": "https://github.com/yourusername/covid-analysis#readme",
-    "github": "https://github.com/yourusername/covid-analysis"
-  },
-  {
-    "title": "Autonomous Car Simulation",
-    "emoji": "🚗",
-    "readme": "https://github.com/yourusername/autonomous-car#readme",
-    "github": "https://github.com/yourusername/autonomous-car"
-  },
-  {
-    "title": "Medical Image Diagnosis",
-    "emoji": "🏥",
-    "readme": "https://github.com/yourusername/medical-diagnosis#readme",
-    "github": "https://github.com/yourusername/medical-diagnosis"
-  },
-  {
-    "title": "Twitter Fake News Detector",
-    "emoji": "🐦",
-    "readme": "https://github.com/yourusername/fake-news-detector#readme",
-    "github": "https://github.com/yourusername/fake-news-detector"
-  },
-  {
-    "title": "E-Commerce Sales Dashboard",
-    "emoji": "🛒",
-    "readme": "https://github.com/yourusername/ecommerce-dashboard#readme",
-    "github": "https://github.com/yourusername/ecommerce-dashboard"
-  },
-  {
-    "title": "Energy Consumption Forecasting",
-    "emoji": "⚡",
-    "readme": "https://github.com/yourusername/energy-forecast#readme",
-    "github": "https://github.com/yourusername/energy-forecast"
-  },
-  {
-    "title": "Face Recognition System",
-    "emoji": "👤",
-    "readme": "https://github.com/yourusername/face-recognition#readme",
-    "github": "https://github.com/yourusername/face-recognition"
-  },
-  {
-    "title": "Crop Yield Prediction",
-    "emoji": "🌾",
-    "readme": "https://github.com/yourusername/crop-yield#readme",
-    "github": "https://github.com/yourusername/crop-yield"
-  },
-  {
-    "title": "Resume Screening Automation",
-    "emoji": "📄",
-    "readme": "https://github.com/yourusername/resume-screening#readme",
-    "github": "https://github.com/yourusername/resume-screening"
-  },
-  {
-    "title": "Chatbot with Transformers",
-    "emoji": "🤖",
-    "readme": "https://github.com/yourusername/chatbot-transformer#readme",
-    "github": "https://github.com/yourusername/chatbot-transformer"
-  },
-  {
-    "title": "Air Quality Index Predictor",
-    "emoji": "🌫️",
-    "readme": "https://github.com/yourusername/air-quality#readme",
-    "github": "https://github.com/yourusername/air-quality"
-  },
-  {
-    "title": "Loan Default Prediction",
-    "emoji": "🏦",
-    "readme": "https://github.com/yourusername/loan-default#readme",
-    "github": "https://github.com/yourusername/loan-default"
-  },
-  {
-    "title": "Object Detection YOLO",
-    "emoji": "📷",
-    "readme": "https://github.com/yourusername/object-detection#readme",
-    "github": "https://github.com/yourusername/object-detection"
-  },
-  {
-    "title": "Supply Chain Optimization",
-    "emoji": "🚚",
-    "readme": "https://github.com/yourusername/supply-chain#readme",
-    "github": "https://github.com/yourusername/supply-chain"
-  },
-  {
-    "title": "Movie Review Classifier",
-    "emoji": "🎬",
-    "readme": "https://github.com/yourusername/movie-classifier#readme",
-    "github": "https://github.com/yourusername/movie-classifier"
-  },
-  {
-    "title": "Traffic Flow Prediction",
-    "emoji": "🚦",
-    "readme": "https://github.com/yourusername/traffic-flow#readme",
-    "github": "https://github.com/yourusername/traffic-flow"
-  },
-  {
-    "title": "Diabetes Risk Assessment",
-    "emoji": "💉",
-    "readme": "https://github.com/yourusername/diabetes-risk#readme",
-    "github": "https://github.com/yourusername/diabetes-risk"
-  },
-  {
-    "title": "Text Summarisation Tool",
-    "emoji": "📝",
-    "readme": "https://github.com/yourusername/text-summariser#readme",
-    "github": "https://github.com/yourusername/text-summariser"
-  },
-  {
-    "title": "Earthquake Damage Predictor",
-    "emoji": "🌍",
-    "readme": "https://github.com/yourusername/earthquake-damage#readme",
-    "github": "https://github.com/yourusername/earthquake-damage"
-  },
-  {
-    "title": "Sports Performance Analytics",
-    "emoji": "⚽",
-    "readme": "https://github.com/yourusername/sports-analytics#readme",
-    "github": "https://github.com/yourusername/sports-analytics"
-  },
-  {
-    "title": "Handwriting Recognition",
-    "emoji": "✍️",
-    "readme": "https://github.com/yourusername/handwriting-recognition#readme",
-    "github": "https://github.com/yourusername/handwriting-recognition"
-  },
-  {
-    "title": "Customer Segmentation",
-    "emoji": "👥",
-    "readme": "https://github.com/yourusername/customer-segmentation#readme",
-    "github": "https://github.com/yourusername/customer-segmentation"
-  },
-  {
-    "title": "Wildfire Spread Prediction",
-    "emoji": "🔥",
-    "readme": "https://github.com/yourusername/wildfire-prediction#readme",
-    "github": "https://github.com/yourusername/wildfire-prediction"
-  },
-  {
-    "title": "Speech Emotion Recognition",
-    "emoji": "🎙️",
-    "readme": "https://github.com/yourusername/speech-emotion#readme",
-    "github": "https://github.com/yourusername/speech-emotion"
-  },
-  {
-    "title": "Retail Demand Forecasting",
-    "emoji": "🏪",
-    "readme": "https://github.com/yourusername/retail-demand#readme",
-    "github": "https://github.com/yourusername/retail-demand"
-  },
-  {
-    "title": "Road Sign Classification",
-    "emoji": "🛑",
-    "readme": "https://github.com/yourusername/road-sign#readme",
-    "github": "https://github.com/yourusername/road-sign"
-  },
-  {
-    "title": "Social Network Analysis",
-    "emoji": "🕸️",
-    "readme": "https://github.com/yourusername/social-network#readme",
-    "github": "https://github.com/yourusername/social-network"
-  },
-  {
-    "title": "Drug Discovery ML Model",
-    "emoji": "💊",
-    "readme": "https://github.com/yourusername/drug-discovery#readme",
-    "github": "https://github.com/yourusername/drug-discovery"
-  },
-  {
-    "title": "Portfolio Website Builder",
-    "emoji": "💻",
-    "readme": "https://github.com/yourusername/portfolio-builder#readme",
-    "github": "https://github.com/yourusername/portfolio-builder"
-  }
+  { "title": "Customer Churn Prediction",   "emoji": "📊", "category": "Machine Learning",   "github": "", "readme": "" },
+  { "title": "Sentiment Analysis NLP",      "emoji": "🧠", "category": "NLP",                "github": "", "readme": "" },
+  { "title": "House Price Predictor",       "emoji": "🏠", "category": "Machine Learning",   "github": "", "readme": "" },
+  { "title": "Stock Market Forecasting",    "emoji": "📈", "category": "Finance",            "github": "", "readme": "" },
+  { "title": "Image Classification CNN",    "emoji": "🖼️", "category": "Computer Vision",    "github": "", "readme": "" },
+  { "title": "Fraud Detection System",      "emoji": "🔍", "category": "Finance",            "github": "", "readme": "" },
+  { "title": "Recommendation Engine",       "emoji": "🎯", "category": "Machine Learning",   "github": "", "readme": "" },
+  { "title": "COVID-19 Data Analysis",      "emoji": "🦠", "category": "Healthcare",         "github": "", "readme": "" },
+  { "title": "Autonomous Car Simulation",   "emoji": "🚗", "category": "Computer Vision",    "github": "", "readme": "" },
+  { "title": "Medical Image Diagnosis",     "emoji": "🏥", "category": "Healthcare",         "github": "", "readme": "" },
+  { "title": "Fake News Detector",          "emoji": "🐦", "category": "NLP",                "github": "", "readme": "" },
+  { "title": "E-Commerce Dashboard",        "emoji": "🛒", "category": "Data Analysis",      "github": "", "readme": "" },
+  { "title": "Energy Forecasting",          "emoji": "⚡", "category": "Data Analysis",      "github": "", "readme": "" },
+  { "title": "Face Recognition",            "emoji": "👤", "category": "Computer Vision",    "github": "", "readme": "" },
+  { "title": "Crop Yield Prediction",       "emoji": "🌾", "category": "Machine Learning",   "github": "", "readme": "" },
+  { "title": "Resume Screening",            "emoji": "📄", "category": "NLP",                "github": "", "readme": "" },
+  { "title": "Chatbot Transformer",         "emoji": "🤖", "category": "NLP",                "github": "", "readme": "" },
+  { "title": "Air Quality Predictor",       "emoji": "🌫️", "category": "Data Analysis",      "github": "", "readme": "" },
+  { "title": "Loan Default Prediction",     "emoji": "🏦", "category": "Finance",            "github": "", "readme": "" },
+  { "title": "Object Detection YOLO",       "emoji": "📷", "category": "Computer Vision",    "github": "", "readme": "" },
+  { "title": "Supply Chain Optimization",   "emoji": "🚚", "category": "Data Analysis",      "github": "", "readme": "" },
+  { "title": "Movie Review Classifier",     "emoji": "🎬", "category": "NLP",                "github": "", "readme": "" },
+  { "title": "Traffic Flow Prediction",     "emoji": "🚦", "category": "Data Analysis",      "github": "", "readme": "" },
+  { "title": "Diabetes Risk Assessment",    "emoji": "💉", "category": "Healthcare",         "github": "", "readme": "" },
+  { "title": "Text Summarisation Tool",     "emoji": "📝", "category": "NLP",                "github": "", "readme": "" },
+  { "title": "Earthquake Damage Predictor", "emoji": "🌍", "category": "Data Analysis",      "github": "", "readme": "" },
+  { "title": "Sports Analytics",            "emoji": "⚽", "category": "Data Analysis",      "github": "", "readme": "" },
+  { "title": "Handwriting Recognition",     "emoji": "✍️", "category": "Computer Vision",    "github": "", "readme": "" },
+  { "title": "Customer Segmentation",       "emoji": "👥", "category": "Machine Learning",   "github": "", "readme": "" },
+  { "title": "Wildfire Prediction",         "emoji": "🔥", "category": "Machine Learning",   "github": "", "readme": "" },
+  { "title": "Speech Emotion Recognition",  "emoji": "🎙️", "category": "NLP",                "github": "", "readme": "" },
+  { "title": "Retail Demand Forecasting",   "emoji": "🏪", "category": "Finance",            "github": "", "readme": "" },
+  { "title": "Road Sign Classification",    "emoji": "🛑", "category": "Computer Vision",    "github": "", "readme": "" },
+  { "title": "Social Network Analysis",     "emoji": "🕸️", "category": "Data Analysis",      "github": "", "readme": "" },
+  { "title": "Drug Discovery ML",           "emoji": "💊", "category": "Healthcare",         "github": "", "readme": "" },
+  { "title": "Portfolio Website Builder",   "emoji": "💻", "category": "Web",                "github": "", "readme": "" }
 ]
