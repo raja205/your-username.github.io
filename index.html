@@ -252,7 +252,7 @@
 <!-- ── Navbar ── -->
 <nav class="navbar navbar-expand-md fixed-top">
   <div class="container">
-    <span class="navbar-brand" id="nav-name" onclick="closePanels()">Portfolio</span>
+    <span class="navbar-brand" onclick="closePanels()">Raja Sen</span>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
       style="border:none !important;box-shadow:none !important;outline:none !important;">
       <span class="navbar-toggler-icon" style="filter:invert(0.5)"></span>
@@ -641,8 +641,7 @@
     allCerts      = certs;
     filteredProjs = projects;
 
-    document.title = profile.name + ' | Portfolio';
-    document.getElementById('nav-name').textContent = profile.name;
+    document.title = 'Portfolio';
     if (profile.cv) document.getElementById('cv-link').href = profile.cv;
 
     document.getElementById('about-name').textContent  = profile.name;
